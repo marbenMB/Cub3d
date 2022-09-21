@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 18:21:46 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:14:57 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ void	mlx_ptr_init(t_data *data)
 {
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "+> MAR_BEN <+");
+	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
 }

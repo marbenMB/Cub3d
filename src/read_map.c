@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:13:15 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 16:43:14 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:53:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	read_map(int fd, t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		data->map[idx] = ft_strdup(line);
+		data->map[idx] = ft_strtrim(line, "\n");
 		free(line);
 		idx++;
 		line = get_next_line(fd);
