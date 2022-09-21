@@ -6,11 +6,11 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:13:15 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/19 20:03:41 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:43:14 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 void    get_parced_map(t_data *data, char *file_name)
 {

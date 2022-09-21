@@ -11,16 +11,19 @@ FRAM = -lmlx -framework OpenGL -framework AppKit
 ########## PATH ########
 
 LIBFT_DIR = libft
+SRC_DIR = src
 UTILS_DIR = utils/
 
-SRC = $(UTILS_DIR)/get_next_line.c $(UTILS_DIR)/get_next_line_utils.c cub3d.c read_map.c ft_error.c #draw_2d.c
+SRC = $(UTILS_DIR)/get_next_line.c $(UTILS_DIR)/get_next_line_utils.c $(SRC_DIR)/cub3d.c $(SRC_DIR)/read_map.c $(SRC_DIR)/ft_error.c $(SRC_DIR)/draw_2d.c
 
 OBJ = $(SRC:%.c=%.o)
+
+.SILENT:	
 
 all: $(NAME)
 
 $(NAME) : _libft $(OBJ)
-	@$(CC) $(CFLAGS) $(SRC) $(FRAM) $(LIBFT_DIR)/libft.a -o $(NAME) -g
+	@ $(CC) $(CFLAGS) $(SRC) $(FRAM) $(LIBFT_DIR)/libft.a -o $(NAME) -g
 	@printf "\x1b[32m  ✅     Make successfully    💯 ✅\033[0m\n"
 
 %.o : %.c $(SRC) cub3d.h
@@ -39,7 +42,7 @@ clean : _libft_clean
 	@rm -rf $(OBJ)
 
 fclean : _libft_fclean clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) cub3d.dSYM
 	@printf "\x1b[36m  ✅ Make fclean successfully 💯 ✅\033[0m\n"
 
 re : fclean all

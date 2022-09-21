@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 15:17:11 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/19 15:21:39 by mbenbajj         ###   ########.fr       */
+/*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/09/21 18:33:39 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _STRUCTS_H
+#define _STRUCTS_H
+
 # include "cub3d.h"
 
-void    error_exit(char *msg, int exit_stat)
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
+typedef struct s_data
 {
-    ft_putendl_fd(msg, STD_ERR);
-    exit(exit_stat);
-}
+	void	*mlx;
+	void	*win;
+    char    **map;
+	int		map_height;
+	int		map_width;
+	t_img	*img;
+	
+}	t_data;
+
+#endif

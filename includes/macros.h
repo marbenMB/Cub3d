@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/19 18:11:49 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:31:41 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 #define STD_ERR 2
 #define SUCC 0
 #define FAIL -1
+#define WIDTH 1600
+#define HEIGHT 1200
 
 #endif

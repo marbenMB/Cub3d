@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/19 15:32:57 by mbenbajj         ###   ########.fr       */
+/*   Created: 2022/09/19 15:17:11 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/09/21 16:43:05 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _STRUCTS_H
-#define _STRUCTS_H
+# include "../includes/cub3d.h"
 
-# include "cub3d.h"
-
-typedef struct s_data
+void    error_exit(char *msg, int exit_stat)
 {
-    char    **map;
-	int		map_height;
-	int		map_width;
-	
-}	t_data;
-
-
-#endif
+    ft_putendl_fd(msg, STD_ERR);
+    exit(exit_stat);
+}
