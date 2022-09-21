@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 19:14:57 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:57:16 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	init_data(t_data *data)
 	data->map_height = 0;
 	data->map_width = 0;
 	data->img = (t_img *)ft_calloc(1, sizeof(t_img));
+	data->x_player = -1;
+	data->y_player = -1;
 }
 
 void	mlx_ptr_init(t_data *data)

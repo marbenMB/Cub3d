@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:31:36 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:58:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	drawing(t_data *data);
 void	draw_2d(t_data *data);
 void	draw_2d_cube(t_data *data, int x, int y, int color);
+void	draw_2d_player(t_data *data, int x, int y, int color);
 
 #endif

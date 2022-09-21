@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:39:48 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:01:09 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	draw_2d(t_data *data)
 				draw_2d_cube(data, x, y, RED);
 			else if (data->map[y][x] == '0')
 				draw_2d_cube(data, x, y, WHITE);
+			else if (data->map[y][x] == 'N')
+			{
+				draw_2d_cube(data, x, y, WHITE);
+				draw_2d_player(data, x, y, RED);
+			}
 			x++;
 		}
 		y++;
@@ -63,4 +68,16 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 		}
 		ydx++;
 	}
+}
+
+void	draw_2d_player(t_data *data, int x, int y, int color)
+{
+	int		xdx;
+	int		ydx;
+
+	ydx = y * 32 + 16;
+	xdx = x * 32 + 16;
+	ft_mlx_pixel_put(data, xdx, ydx, color);
+	data->x_player = xdx;
+	data->y_player = ydx;
 }
