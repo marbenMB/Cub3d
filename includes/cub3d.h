@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:58:19 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:14:50 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	drawing(t_data *data);
 void	draw_2d(t_data *data);
 void	draw_2d_cube(t_data *data, int x, int y, int color);
 void	draw_2d_player(t_data *data, int x, int y, int color);
+void	draw_2d_line(t_data *data, double x2, double y2, int color);
 
 #endif

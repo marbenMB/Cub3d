@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:29:30 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:20:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 
 #define WIDTH 1600
 #define HEIGHT 1200
+
+#define TILE_SIZE 32
+#define LINE_LEN 16
 
 #define WHITE 0xffffff
 #define BLACK 0x000000

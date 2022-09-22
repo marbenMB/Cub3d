@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:54:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:28:34 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_data
 	int		map_height;
 	int		map_width;
 	t_img	*img;
-	int		x_player;
-	int		y_player;
+	double	x_player;
+	double	y_player;
 	
 }	t_data;
 

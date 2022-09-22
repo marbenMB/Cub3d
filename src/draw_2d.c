@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 21:01:09 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:22:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,39 @@ void	draw_2d_player(t_data *data, int x, int y, int color)
 	int		xdx;
 	int		ydx;
 
-	ydx = y * 32 + 16;
-	xdx = x * 32 + 16;
+	ydx = y * TILE_SIZE + TILE_SIZE / 2;
+	xdx = x * TILE_SIZE + TILE_SIZE / 2;
 	ft_mlx_pixel_put(data, xdx, ydx, color);
-	data->x_player = xdx;
-	data->y_player = ydx;
+	data->x_player = (double)xdx;
+	data->y_player = (double)ydx;
+	draw_2d_line(data, data->x_player + LINE_LEN, data->y_player + LINE_LEN, RED);
+}
+
+void	draw_2d_line(t_data *data, double x2, double y2, int color)
+{
+	double	dx;
+	double	dy;
+	double	steps;
+	double	xinc;
+	double	yinc;
+
+	dx = data->x_player - x2;
+	dy = data->y_player - y2;
+	if (fabs(dx) > fabs(dy))
+		steps = fabs(dx);
+	else
+		steps = fabs(dy);
+	xinc = dx / steps;
+	yinc = dy /steps;
+	
+	//	drawing
+	double	i;
+	i = 0;
+	while (i <= steps)
+	{
+		ft_mlx_pixel_put(data, round(data->x_player), round(data->y_player), color);
+		data->x_player += xinc;
+		data->y_player += yinc;
+		i++;
+	}
 }
