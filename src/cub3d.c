@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/21 20:57:16 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:05:28 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
     }
 	mlx_ptr_init(&data);
 	drawing(&data);
+	ft_mlx_hooking(&data);
 	mlx_loop(data.mlx);
 	return (0);
 }
@@ -50,4 +51,9 @@ void	mlx_ptr_init(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "+> MAR_BEN <+");
 	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
+}
+
+void	ft_mlx_hooking(t_data *data)
+{
+	mlx_hook(data->win, 02, 0, ft_key_press, data);
 }

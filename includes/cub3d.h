@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/22 21:14:50 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:05:17 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 	//	----------------	FT_CUB3D	----------------  //
 void	init_data(t_data *data);
 void	mlx_ptr_init(t_data *data);
+void	ft_mlx_hooking(t_data *data);
 	//	----------------	FT_ERROR	----------------  //
 void    error_exit(char *msg, int exit_stat);
 	//	----------------	READ_MAP	----------------  //
@@ -42,5 +43,8 @@ void	draw_2d(t_data *data);
 void	draw_2d_cube(t_data *data, int x, int y, int color);
 void	draw_2d_player(t_data *data, int x, int y, int color);
 void	draw_2d_line(t_data *data, double x2, double y2, int color);
+	//	----------------	KEY_HANDLE 	----------------  //
+void	ft_destroy_all(t_data *data);
+int 	ft_key_press(int key, t_data *data);
 
 #endif
