@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/23 14:05:28 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:23:20 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
         init_data(&data);
 		get_parced_map(&data, av[1]);
     }
-	mlx_ptr_init(&data);
+	ft_mlx_ptr_init(&data, 0);
 	drawing(&data);
 	ft_mlx_hooking(&data);
 	mlx_loop(data.mlx);
@@ -43,12 +43,17 @@ void	init_data(t_data *data)
 	data->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	data->x_player = -1;
 	data->y_player = -1;
+	data->x_move = 0;
+	data->y_move = 0;
 }
 
-void	mlx_ptr_init(t_data *data)
+void	ft_mlx_ptr_init(t_data *data, int call)
 {
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "+> MAR_BEN <+");
+	if (!call)
+	{	
+		data->mlx = mlx_init();
+		data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "+> MAR_BEN <+");
+	}
 	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->line_length, &data->img->endian);
 }

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/23 14:05:17 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:14:21 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 //	************************	FUNCTIONS	************************  //
 	//	----------------	FT_CUB3D	----------------  //
 void	init_data(t_data *data);
-void	mlx_ptr_init(t_data *data);
+void	ft_mlx_ptr_init(t_data *data, int call);
 void	ft_mlx_hooking(t_data *data);
 	//	----------------	FT_ERROR	----------------  //
 void    error_exit(char *msg, int exit_stat);

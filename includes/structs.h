@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/22 20:28:34 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:13:32 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_data
 	t_img	*img;
 	double	x_player;
 	double	y_player;
+	double	x_move;
+	double	y_move;
 	
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/22 21:44:36 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:27:37 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ void	draw_2d(t_data *data)
 			else if (data->map[y][x] == 'N')
 			{
 				draw_2d_cube(data, x, y, WHITE);
-				draw_2d_player(data, x, y, BLACK);
+				data->x_player = x;
+				data->y_player = y;
 			}
 			x++;
 		}
 		y++;
 	}
+	draw_2d_player(data, data->x_player, data->y_player, BLACK);
 }
 
 void	draw_2d_cube(t_data *data, int x, int y, int color)
@@ -77,10 +79,10 @@ void	draw_2d_player(t_data *data, int x, int y, int color)
 
 	ydx = y * TILE_SIZE + TILE_SIZE / 2;
 	xdx = x * TILE_SIZE + TILE_SIZE / 2;
-	ft_mlx_pixel_put(data, xdx, ydx, color);
 	data->x_player = (double)xdx;
 	data->y_player = (double)ydx;
-	draw_2d_line(data, data->x_player + LINE_LEN, data->y_player + LINE_LEN, BLACK);
+	ft_mlx_pixel_put(data, data->x_player + data->x_move, data->y_player + data->y_move, color);
+	draw_2d_line(data, data->x_player + data->x_move + LINE_LEN, data->y_player + data->y_move + LINE_LEN, BLACK);
 }
 
 void	draw_2d_line(t_data *data, double x2, double y2, int color)
@@ -91,8 +93,8 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	double	xinc;
 	double	yinc;
 
-	dx = data->x_player - x2;
-	dy = data->y_player - y2;
+	dx = (data->x_player + data->x_move)- x2;
+	dy = (data->y_player + data->y_move) - y2;
 	if (fabs(dx) > fabs(dy))
 		steps = fabs(dx);
 	else
@@ -105,7 +107,7 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	i = 0;
 	while (i <= steps)
 	{
-		ft_mlx_pixel_put(data, round(data->x_player), round(data->y_player), color);
+		ft_mlx_pixel_put(data, round(data->x_player + data->x_move), round(data->y_player + data->y_move), color);
 		data->x_player += xinc;
 		data->y_player += yinc;
 		i++;
