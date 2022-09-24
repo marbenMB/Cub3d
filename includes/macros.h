@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/23 22:12:25 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 16:37:58 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 //	***		DRAW_SIZES
 #define TILE_SIZE 32
-#define LINE_LEN 16
+#define LINE_LEN (TILE_SIZE / 2)
 
 //	***		COLORS
 #define WHITE 0xffffff
@@ -46,5 +46,8 @@
 #define PLAY_DOWN 1
 #define PLAY_LEFT 0
 #define	PLAY_RIGHT 2
+
+//  ***     ANGLE
+#define ONE_RAD 1
 
 #endif

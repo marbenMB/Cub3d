@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 13:06:35 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:58:51 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,17 @@ void	draw_2d(t_data *data)
 				draw_2d_cube(data, x, y, WHITE);
 				data->x_player = x;
 				data->y_player = y;
-				if (data->map[y][x] == 'N')
-					data->view_angle = M_PI / 2;
-				else if (data->map[y][x] == 'S')
-					data->view_angle = 3 * M_PI / 2;
-				else if (data->map[y][x] == 'W')
-					data->view_angle = M_PI;
-				else if (data->map[y][x] == 'E')
-					data->view_angle = 0;
+				if (data->view_angle == tan(M_PI / 2))
+				{
+					if (data->map[y][x] == 'N')
+						data->view_angle = M_PI / 2;
+					else if (data->map[y][x] == 'S')
+						data->view_angle = 3 * M_PI / 2;
+					else if (data->map[y][x] == 'W')
+						data->view_angle = M_PI;
+					else if (data->map[y][x] == 'E')
+						data->view_angle = 0;
+				}
 			}
 			x++;
 		}
@@ -67,11 +70,11 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 	int		xdx;
 	int		ydx;
 
-	ydx = y * 32;
-	while (ydx <= y * 32 + 32)
+	ydx = y * TILE_SIZE;
+	while (ydx <= y * TILE_SIZE + TILE_SIZE)
 	{
-		xdx = x * 32;
-		while (xdx <= x * 32 + 32)
+		xdx = x * TILE_SIZE;
+		while (xdx <= x * TILE_SIZE + TILE_SIZE)
 		{
 			ft_mlx_pixel_put(data, xdx, ydx, color);
 			xdx++;
@@ -116,8 +119,6 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	while (i <= steps)
 	{
 		ft_mlx_pixel_put(data, round(data->x_player + data->x_move + xinc * i), round(data->y_player + data->y_move + yinc * i), color);
-		// data->x_move += xinc;
-		// data->y_move += yinc;
 		i++;
 	}
 }

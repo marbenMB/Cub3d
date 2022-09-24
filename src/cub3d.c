@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/23 22:23:20 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 15:10:01 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	init_data(t_data *data)
 	data->y_player = -1;
 	data->x_move = 0;
 	data->y_move = 0;
+	data->view_angle = tan(M_PI / 2);
 }
 
 void	ft_mlx_ptr_init(t_data *data, int call)

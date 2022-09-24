@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/23 22:14:21 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 15:02:01 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color);
 	//	----------------	KEY_HANDLE 	----------------  //
 void	ft_destroy_all(t_data *data);
 int 	ft_key_press(int key, t_data *data);
+void	play_key(int key, t_data *data);
+void	row_key(int key, t_data *data);
 
 #endif
