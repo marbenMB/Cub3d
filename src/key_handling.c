@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/25 17:35:42 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:46:59 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	play_key(int key, t_data *data)
         data->y_move += sin(data->view_angle);
 		data->x_move += cos(data->view_angle);
 	}
-	else if (key == PLAY_LEFT)
+	else if (key == PLAY_RIGHT)
 	{
         data->y_move -= cos(data->view_angle);
 		data->x_move += sin(data->view_angle);
 	}
-	else if (key == PLAY_RIGHT)
+	else if (key == PLAY_LEFT)
 	{
         data->y_move += cos(data->view_angle);
 		data->x_move -= sin(data->view_angle);
@@ -59,7 +59,7 @@ void	play_key(int key, t_data *data)
 void	row_key(int key, t_data *data)
 {
 	if (key == ROW_LEFT)
-		data->view_angle -= ONE_RAD;
+		data->view_angle -= ADD_ANGLE;
 	else if (key == ROW_RIGHT)
-		data->view_angle += ONE_RAD;
+		data->view_angle += ADD_ANGLE;
 }

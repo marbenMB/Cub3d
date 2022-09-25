@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 16:37:58 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:46:58 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@
 #define	PLAY_RIGHT 2
 
 //  ***     ANGLE
-#define ONE_RAD 1
+#define ADD_ANGLE 0.05
 
 #endif
