@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 15:10:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:41:24 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int	main(int ac, char **av)
 		printf("\x1b[31m Error in arguments \033[0m\n");
 		return (1);
 	}
-	else
-    {
-        init_data(&data);
-		get_parced_map(&data, av[1]);
-    }
+    init_data(&data);
+	get_parced_map(&data, av[1]);
+	get_player_data(&data);
 	ft_mlx_ptr_init(&data, 0);
 	drawing(&data);
 	ft_mlx_hooking(&data);

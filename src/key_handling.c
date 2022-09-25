@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 16:38:26 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:35:42 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,25 @@ int ft_key_press(int key, t_data *data)
 void	play_key(int key, t_data *data)
 {
 	if (key == PLAY_UP)
-        data->y_move -= 2;
+	{
+        data->y_move -= sin(data->view_angle);
+		data->x_move -= cos(data->view_angle);
+	}
     else if (key == PLAY_DOWN)
-		data->y_move += 2;
+	{
+        data->y_move += sin(data->view_angle);
+		data->x_move += cos(data->view_angle);
+	}
 	else if (key == PLAY_LEFT)
-		data->x_move -= 2;
+	{
+        data->y_move -= cos(data->view_angle);
+		data->x_move += sin(data->view_angle);
+	}
 	else if (key == PLAY_RIGHT)
-		data->x_move += 2;
+	{
+        data->y_move += cos(data->view_angle);
+		data->x_move -= sin(data->view_angle);
+	}
 }
 
 void	row_key(int key, t_data *data)

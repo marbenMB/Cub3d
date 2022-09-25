@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 15:02:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:10:57 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	get_parced_map(t_data *data, char *file_name);
 void	map_height(int fd, t_data *data);
 void	map_width(t_data *data, char *line);
 void	read_map(int fd, t_data *data);
+	//	----------------	PLAY_DATA 	----------------  //
+void	get_player_data(t_data *data);
+void    init_angle(t_data *data, char player);
 	//	----------------	FT_DRAW 	----------------  //
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	drawing(t_data *data);
