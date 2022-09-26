@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 18:41:24 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:03:39 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ void	init_data(t_data *data)
 	data->map_height = 0;
 	data->map_width = 0;
 	data->img = (t_img *)ft_calloc(1, sizeof(t_img));
-	data->x_player = -1;
-	data->y_player = -1;
-	data->x_move = 0;
-	data->y_move = 0;
-	data->view_angle = tan(M_PI / 2);
+	data->play = (t_play *)ft_calloc(1, sizeof(t_play));
+	data->play->x_player = -1;
+	data->play->y_player = -1;
+	data->play->x_move = 0;
+	data->play->y_move = 0;
+	data->play->view_angle = tan(M_PI / 2);
 }
 
 void	ft_mlx_ptr_init(t_data *data, int call)
@@ -60,4 +61,5 @@ void	ft_mlx_ptr_init(t_data *data, int call)
 void	ft_mlx_hooking(t_data *data)
 {
 	mlx_hook(data->win, 02, 0, ft_key_press, data);
+	// mlx_hook(data->win, 03, 0, ft_key_release, data);
 }

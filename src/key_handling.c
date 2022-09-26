@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/25 17:46:59 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:46:23 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@ void	play_key(int key, t_data *data)
 {
 	if (key == PLAY_UP)
 	{
-        data->y_move -= sin(data->view_angle);
-		data->x_move -= cos(data->view_angle);
+        data->play->y_move -= sin(data->play->view_angle);
+		data->play->x_move -= cos(data->play->view_angle);
 	}
     else if (key == PLAY_DOWN)
 	{
-        data->y_move += sin(data->view_angle);
-		data->x_move += cos(data->view_angle);
+        data->play->y_move += sin(data->play->view_angle);
+		data->play->x_move += cos(data->play->view_angle);
 	}
 	else if (key == PLAY_RIGHT)
 	{
-        data->y_move -= cos(data->view_angle);
-		data->x_move += sin(data->view_angle);
+        data->play->y_move -= cos(data->play->view_angle);
+		data->play->x_move += sin(data->play->view_angle);
 	}
 	else if (key == PLAY_LEFT)
 	{
-        data->y_move += cos(data->view_angle);
-		data->x_move -= sin(data->view_angle);
+        data->play->y_move += cos(data->play->view_angle);
+		data->play->x_move -= sin(data->play->view_angle);
 	}
 }
 
 void	row_key(int key, t_data *data)
 {
 	if (key == ROW_LEFT)
-		data->view_angle -= ADD_ANGLE;
+		data->play->view_angle -= ADD_ANGLE;
 	else if (key == ROW_RIGHT)
-		data->view_angle += ADD_ANGLE;
+		data->play->view_angle += ADD_ANGLE;
 }

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/24 18:21:06 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:46:50 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	get_player_data(t_data *data)
 		{
 			if (ft_strchr("NEWS",data->map[y][x]))
 			{
-				data->x_player = x;
-				data->y_player = y;
+				data->play->x_player = x;
+				data->play->y_player = y;
 				init_angle(data, data->map[y][x]);
 				break ;
 			}
@@ -39,11 +39,11 @@ void	get_player_data(t_data *data)
 void    init_angle(t_data *data, char player)
 {
 	if (player == 'N')
-		data->view_angle = M_PI / 2;
+		data->play->view_angle = M_PI / 2;
 	else if (player == 'S')
-		data->view_angle = 3 * M_PI / 2;
+		data->play->view_angle = 3 * M_PI / 2;
 	else if (player == 'W')
-		data->view_angle = M_PI;
+		data->play->view_angle = M_PI;
 	else if (player == 'E')
-		data->view_angle = 0;
+		data->play->view_angle = 0;
 }
