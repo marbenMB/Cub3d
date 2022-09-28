@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/26 16:48:19 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:02:02 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,13 @@ void	draw_2d(t_data *data)
 		{
 			if (data->map[y][x] == '1')
 				draw_2d_cube(data, x, y, RED);
-			else if (data->map[y][x] == '0')
+			else if (ft_strchr("NEWS0",data->map[y][x]))
 				draw_2d_cube(data, x, y, WHITE);
-			else if (ft_strchr("NEWS",data->map[y][x]))
-			{
-				data->play->x_player = x;
-				data->play->y_player = y;
-				draw_2d_cube(data, x, y, WHITE);
-			}
 			x++;
 		}
 		y++;
 	}
-	draw_2d_player(data, data->play->x_player, data->play->y_player, RED);
+	draw_2d_player(data, RED);
 }
 
 void	draw_2d_cube(t_data *data, int x, int y, int color)
@@ -72,17 +66,17 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 	}
 }
 
-void	draw_2d_player(t_data *data, int x, int y, int color)
+void	draw_2d_player(t_data *data, int color)
 {
-	int		xdx;
-	int		ydx;
-
-	ydx = y * TILE_SIZE + TILE_SIZE / 2;
-	xdx = x * TILE_SIZE + TILE_SIZE / 2;
-	data->play->x_player = (double)xdx  + data->play->x_move;
-	data->play->y_player = (double)ydx  + data->play->y_move;
+	if (check_isWall(data))
+	{
+		data->play->x_player += data->play->x_move;
+		data->play->y_player += data->play->y_move;
+	}
 	draw_2d_line(data, data->play->x_player + (cos(data->play->view_angle) * LINE_LEN), data->play->y_player + sin(data->play->view_angle) * LINE_LEN, BLACK);
 	ft_mlx_pixel_put(data, data->play->x_player , data->play->y_player , color);
+	data->play->x_move = 0;
+	data->play->y_move = 0;
 }
 
 void	draw_2d_line(t_data *data, double x2, double y2, int color)

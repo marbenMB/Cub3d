@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/26 16:46:50 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:36:15 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	get_player_data(t_data *data)
 		{
 			if (ft_strchr("NEWS",data->map[y][x]))
 			{
-				data->play->x_player = x;
-				data->play->y_player = y;
+				data->play->x_player = (x + 0.5) * TILE_SIZE;
+				data->play->y_player = (y + 0.5) * TILE_SIZE;
 				init_angle(data, data->map[y][x]);
 				break ;
 			}

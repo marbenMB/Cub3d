@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/26 17:46:35 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:39:07 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,30 @@ void	check_key_press(int key, t_data *data)
 
 void	play_key(t_data *data)
 {
+	double	idx[2];
+	
+	idx[0] = STEP * cos(data->play->view_angle);
+	idx[1] = STEP * sin(data->play->view_angle);
 	if (data->hooks->key_up)
 	{
-        data->play->y_move -= sin(data->play->view_angle);
-		data->play->x_move -= cos(data->play->view_angle);
+        data->play->y_move = -idx[1];
+		data->play->x_move = -idx[0];
+		
 	}
     if (data->hooks->key_donw)
 	{
-        data->play->y_move += sin(data->play->view_angle);
-		data->play->x_move += cos(data->play->view_angle);
+        data->play->y_move = idx[1];
+		data->play->x_move = idx[0];
 	}
 	if (data->hooks->key_right)
 	{
-        data->play->y_move -= cos(data->play->view_angle);
-		data->play->x_move += sin(data->play->view_angle);
+        data->play->y_move = -idx[0];
+		data->play->x_move = idx[1];
 	}
 	if (data->hooks->key_left)
 	{
-        data->play->y_move += cos(data->play->view_angle);
-		data->play->x_move -= sin(data->play->view_angle);
+        data->play->y_move = idx[0];
+		data->play->x_move = -idx[1];
 	}
 }
 

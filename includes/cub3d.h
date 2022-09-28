@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/26 17:46:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:48:38 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	drawing(t_data *data);
 void	draw_2d(t_data *data);
 void	draw_2d_cube(t_data *data, int x, int y, int color);
-void	draw_2d_player(t_data *data, int x, int y, int color);
+void	draw_2d_player(t_data *data, int color);
 void	draw_2d_line(t_data *data, double x2, double y2, int color);
 	//	----------------	KEY_HANDLE 	----------------  //
 void	ft_destroy_all(t_data *data);
@@ -54,5 +54,8 @@ int		ft_key_release(int key, t_data *data);
 void	check_key_press(int key, t_data *data);
 void	play_key(t_data *data);
 void	row_press(t_data *data);
-
+	//	----------------	FT_CHECK 	----------------  //
+int		check_isWall(t_data *data);
+	//	----------------	FT_UTILS 	----------------  //
+int		convert_todx(double a);
 #endif

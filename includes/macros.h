@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/25 17:46:58 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:40:40 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 //	***		DRAW_SIZES
 #define TILE_SIZE 32
 #define LINE_LEN (TILE_SIZE / 2)
+#define STEP 0.5
 
 //	***		COLORS
 #define WHITE 0xffffff
