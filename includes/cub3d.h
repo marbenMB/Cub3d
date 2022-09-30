@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 16:48:38 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:49:03 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ void	row_press(t_data *data);
 int		check_isWall(t_data *data);
 	//	----------------	FT_UTILS 	----------------  //
 int		convert_todx(double a);
+void	free_stc(t_data *data);
+void	free_tab(char **tab);
 #endif

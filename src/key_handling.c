@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 16:39:07 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:45:22 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_destroy_all(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->img->img);
 	mlx_destroy_window(data->mlx, data->win);
+	free_stc(data);
 	exit (0);
 }
 

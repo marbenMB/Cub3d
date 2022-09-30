@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 16:40:40 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/30 11:52:43 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #define HEIGHT 1200
 
 //	***		DRAW_SIZES
-#define TILE_SIZE 32
+#define TILE_SIZE 40
 #define LINE_LEN (TILE_SIZE / 2)
 #define STEP 0.5
 

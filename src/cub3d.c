@@ -6,16 +6,22 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 16:36:29 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:51:34 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void	ss()
+{
+	system("leaks cub3d");
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 
+	// atexit(ss);
 	if (ac != 2)
 	{
 		printf("\x1b[31m Error in arguments \033[0m\n");
