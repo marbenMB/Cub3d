@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 16:16:58 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:18:10 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ typedef struct s_key
 	int		key_right;
 }	t_key;
 
+typedef struct s_ray
+{
+	int		id;
+	double	angle;
+	double	x_inter;
+	double	y_inter;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -53,6 +60,7 @@ typedef struct s_data
 	t_img	*img;
 	t_play	*play;
 	t_key	*hooks;
+	t_ray	*rays;
 	
 }	t_data;
 

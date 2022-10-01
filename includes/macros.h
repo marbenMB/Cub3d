@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/30 11:52:43 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:44:58 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@
 #define TILE_SIZE 40
 #define LINE_LEN (TILE_SIZE / 2)
 #define STEP 0.5
+#define FOV (60 * M_PI / 180)
+#define NUM_RAYS (WIDTH)
 
 //	***		COLORS
 #define WHITE 0xffffff
 #define BLACK 0x000000
-#define YELLOW 0xffff00 
+#define YELLOW 0xffff00
 #define RED 0xff0000
+#define BLU  0x1acbee
+#define PINK 0xee1aae
 
 //	***		KEYS
 #define	ESC 53

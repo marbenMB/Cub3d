@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/29 18:49:03 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:34:30 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ int		check_isWall(t_data *data);
 int		convert_todx(double a);
 void	free_stc(t_data *data);
 void	free_tab(char **tab);
+	//	----------------	RAY_CAST 	----------------  //
+void	casting(t_data *data, int color);
 #endif

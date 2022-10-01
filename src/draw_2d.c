@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/28 17:02:02 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:33:44 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	draw_2d_player(t_data *data, int color)
 		data->play->x_player += data->play->x_move;
 		data->play->y_player += data->play->y_move;
 	}
-	draw_2d_line(data, data->play->x_player + (cos(data->play->view_angle) * LINE_LEN), data->play->y_player + sin(data->play->view_angle) * LINE_LEN, BLACK);
-	ft_mlx_pixel_put(data, data->play->x_player , data->play->y_player , color);
+	casting(data, color);
+	// ft_mlx_pixel_put(data, data->play->x_player , data->play->y_player , color);
 	data->play->x_move = 0;
 	data->play->y_move = 0;
 }
