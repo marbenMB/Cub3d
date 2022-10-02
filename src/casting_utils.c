@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   casting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 20:33:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 18:17:52 by mbenbajj         ###   ########.fr       */
+/*   Created: 2022/10/02 21:50:30 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/10/02 21:58:23 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	normilize_angle(double *angle)
+t_ray   *lst_new(int id, double angle)
 {
-	*angle = fmod(*angle, (2 * M_PI));
-	if (angle < 0)
-		*angle = *angle + (2 * M_PI);
-}
-int	convert_todx(double a)
-{
-	return ((int)(a / TILE_SIZE));
-}
+    t_ray   *new;
 
-void	free_stc(t_data *data)
-{
-	free_tab(data->map);
-	free(data->play);
-	free(data->hooks);
-	free(data->img);
+    new = (t_ray *)ft_calloc(1, sizeof(t_ray));
+    new->id = id;
+    new->angle = angle;
+	new->next = NULL;
+	return (new);
 }
 
-void	free_tab(char **tab)
+void	lst_add_back(t_ray **lst, t_ray *new)
 {
-	int	i;
+	t_ray	*head;
 
-	i = 0;
-	while (tab[i])
+	head = *lst;
+	if (!*lst)
+		*lst = new;
+	else
 	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab[i]);
+		while (head->next)
+			head = head->next;
+		head->next = new;
+	} 
 }

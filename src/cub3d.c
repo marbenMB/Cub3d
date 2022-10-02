@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/01 16:19:26 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/02 22:50:46 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 	get_parced_map(&data, av[1]);
 	get_player_data(&data);
 	ft_mlx_ptr_init(&data, 0);
+	create_rays(&data);
 	drawing(&data);
 	ft_mlx_hooking(&data);
 	mlx_loop(data.mlx);
@@ -58,7 +59,7 @@ void	init_data(t_data *data)
 	data->hooks->key_left = 0;
 	data->hooks->row_left = 0;
 	data->hooks->row_right = 0;
-	data->rays = (t_ray *)ft_calloc(1, sizeof(t_ray));
+	data->rays = NULL;
 }
 
 void	ft_mlx_ptr_init(t_data *data, int call)

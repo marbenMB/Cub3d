@@ -6,19 +6,21 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/01 18:34:30 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/02 22:54:52 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <libc.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
+# include <stdbool.h>
 # include "../libft/libft.h"
 # include "../utils/utils.h"
 # include "structs.h"
@@ -57,9 +59,15 @@ void	row_press(t_data *data);
 	//	----------------	FT_CHECK 	----------------  //
 int		check_isWall(t_data *data);
 	//	----------------	FT_UTILS 	----------------  //
+void	normilize_angle(double *angle);
 int		convert_todx(double a);
 void	free_stc(t_data *data);
 void	free_tab(char **tab);
 	//	----------------	RAY_CAST 	----------------  //
-void	casting(t_data *data, int color);
+void	create_rays(t_data *data);
+void	casting(t_data *data);
+void	draw_fov(t_data *data, int color);
+	//	---------------- RAY_CAST_UTILS  ----------------  //
+t_ray	*lst_new(int id, double angle);
+void	lst_add_back(t_ray **lst, t_ray *new);
 #endif

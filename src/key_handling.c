@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/29 18:45:22 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/02 18:19:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ void	row_press(t_data *data)
 		data->play->view_angle -= ADD_ANGLE;
 	if (data->hooks->row_right)
 		data->play->view_angle += ADD_ANGLE;
+	normilize_angle(&data->play->view_angle);
 }
