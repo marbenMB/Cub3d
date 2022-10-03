@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 22:54:52 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:38:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,18 @@ void	check_key_press(int key, t_data *data);
 void	play_key(t_data *data);
 void	row_press(t_data *data);
 	//	----------------	FT_CHECK 	----------------  //
-int		check_isWall(t_data *data);
+int		check_isWall(t_data *data, double x_move, double y_move);
+void	check_playFace(t_ray *ray);
 	//	----------------	FT_UTILS 	----------------  //
 void	normilize_angle(double *angle);
 int		convert_todx(double a);
 void	free_stc(t_data *data);
 void	free_tab(char **tab);
 	//	----------------	RAY_CAST 	----------------  //
-void	create_rays(t_data *data);
 void	casting(t_data *data);
-void	draw_fov(t_data *data, int color);
+void	init_rayData(t_data *data);
+void	horizontal_inter(t_data *data);
 	//	---------------- RAY_CAST_UTILS  ----------------  //
-t_ray	*lst_new(int id, double angle);
-void	lst_add_back(t_ray **lst, t_ray *new);
+// t_ray	*lst_new(int id, double angle);
+// void	lst_add_back(t_ray **lst, t_ray *new);
 #endif

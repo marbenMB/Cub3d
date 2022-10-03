@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 20:45:29 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:03:32 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 
 //	***		DRAW_SIZES
 #define TILE_SIZE 40
-#define LINE_LEN (TILE_SIZE / 2)
+#define LINE_LEN (TILE_SIZE)
 #define STEP 1
 #define FOV (60 * M_PI / 180)
 #define NUM_RAYS (WIDTH)
+#define VAR_ANG (FOV / NUM_RAYS)
 
 //	***		COLORS
 #define WHITE 0xffffff

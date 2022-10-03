@@ -6,65 +6,48 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 23:14:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:42:00 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	create_rays(t_data *data)
-{
-	t_ray	ray;
-	
-	ray.id = 0;
-	ray.angle = data->play->view_angle - (FOV / 2);
-	normilize_angle(&ray.angle);
-	while (ray.id < NUM_RAYS)
-	{
-		ray.angle += (FOV / NUM_RAYS);
-		lst_add_back(&data->rays, lst_new(ray.id, ray.angle));
-		ray.id++;
-	}
-}
-
 void	casting(t_data *data)
 {
-	t_ray	*head;
-	double	angle;
-	
-	head = data->rays;
-	angle = data->play->view_angle - (FOV / 2);
-	normilize_angle(&angle);
-	while (data->rays)
+	int		id;
+
+	id = 0;
+	data->rays->angle = data->play->view_angle - (FOV / 2);
+	normilize_angle(&data->rays->angle);
+	while (id <= NUM_RAYS)
 	{
-		data->rays->angle = angle;
-		printf("+> %d : %f\n", data->rays->id, data->rays->angle);
-		angle += (FOV / NUM_RAYS);
-		data->rays = data->rays->next;
+		data->rays->angle += VAR_ANG;
+		init_rayData(data);
+		draw_2d_line(data, data->play->x_player + (cos(data->rays->angle) * LINE_LEN), data->play->y_player + (sin(data->rays->angle) * LINE_LEN), GREY);
+		id++;
 	}
-	data->rays = head;
 }
 
-void	draw_fov(t_data *data, int color)
+void	init_rayData(t_data *data)
 {
-	t_ray	*ray;
-
-	ray = data->rays;
-	while (ray)
-	{
-		draw_2d_line(data, data->play->x_player + (cos(ray->angle) * LINE_LEN * 2), data->play->y_player + (sin(ray->angle) * LINE_LEN * 2), color);
-		ray = ray->next;
-	}
+	check_playFace(data->rays);
+	horizontal_inter(data);
 }
 
-// void	horizental_inter(t_data *data)
-// {
-// 	int		indx[2];
+void	horizontal_inter(t_data *data)
+{
+	t_index		st_inter;
+	t_index		step;
 
-// 	indx[1] = floorf(data->play->y_player / TILE_SIZE) * TILE_SIZE;
-// 	indx[0] = data->play->x_player + (data->play->y_player - indx[1]) / tan(data->rays->angle);
-// 	while (data->map[indx[1]][indx[0]] != 1)
-// 	{
-		
-// 	}
-// }
+	st_inter.dy = floorf(data->play->y_player / TILE_SIZE) * TILE_SIZE;
+	st_inter.dx = data->play->x_player + (data->play->y_player - st_inter.dy) / tan(data->rays->angle);
+	step.dx = 0;
+	step.dy = 0;
+	while (check_isWall(data, step.dx, step.dy))
+	{
+		step.dy = TILE_SIZE;
+		step.dy = TILE_SIZE / tan(data->rays->angle);
+		st_inter.dy += step.dy;
+		st_inter.dx += step.dx;
+	}
+}

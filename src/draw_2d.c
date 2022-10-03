@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 23:14:43 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:39:12 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	drawing(t_data *data)
 {
-	casting(data);
 	draw_2d(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 }
@@ -69,12 +68,12 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 
 void	draw_2d_player(t_data *data, int color)
 {
-	if (check_isWall(data))
+	if (check_isWall(data, data->play->x_move, data->play->y_move))
 	{
 		data->play->x_player += data->play->x_move;
 		data->play->y_player += data->play->y_move;
 	}
-	draw_fov(data, GREY);
+	casting(data);
 	ft_mlx_pixel_put(data, data->play->x_player , data->play->y_player , color);
 	data->play->x_move = 0;
 	data->play->y_move = 0;

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 22:07:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:34:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #define _STRUCTS_H
 
 # include "cub3d.h"
+
+typedef struct	s_index
+{
+	int		x;
+	int		y;
+	double	dx;
+	double	dy;
+}	t_index;
 
 typedef struct	s_img {
 	void	*img;
@@ -59,7 +67,7 @@ typedef struct s_ray
 	double			distance;
 	t_face_ray		face;
 	int				h_or_v;
-	struct s_ray	*next;
+	// struct s_ray	*next;
 	// double	x_best;
 	// double	y_best;
 }	t_ray;

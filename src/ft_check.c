@@ -6,18 +6,18 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/09/30 13:05:11 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:38:37 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_isWall(t_data *data)
+int	check_isWall(t_data *data, double x_move, double y_move)
 {
 	int	next_idx[2];
 
-	next_idx[0] = convert_todx(data->play->x_player + data->play->x_move);
-	next_idx[1] = convert_todx(data->play->y_player + data->play->y_move);
+	next_idx[0] = convert_todx(data->play->x_player + x_move);
+	next_idx[1] = convert_todx(data->play->y_player + y_move);
 	if (data->map[next_idx[1]])
 	{
 		if (next_idx[0] >= (int)ft_strlen(data->map[next_idx[1]]) || data->map[next_idx[1]][next_idx[0]] == '1')
@@ -36,4 +36,28 @@ int	check_isWall(t_data *data)
 				return (0);
 	}
     return (1);
+}
+
+void	check_playFace(t_ray *ray)
+{
+	if (ray->angle > 0 && ray->angle < M_PI)
+	{
+		ray->face.down = true;
+		ray->face.up = false;
+	}
+	else
+	{
+		ray->face.down = false;
+		ray->face.up = true;
+	}
+	if (ray->angle > (M_PI / 2) && ray->angle < (3 * M_PI / 2))
+	{
+		ray->face.left = true;
+		ray->face.right = false;
+	}
+	else
+	{
+		ray->face.left = false;
+		ray->face.right = true;
+	}
 }
