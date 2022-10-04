@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/03 18:38:37 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:47:06 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_isWall(t_data *data, double x_move, double y_move)
 
 	next_idx[0] = convert_todx(data->play->x_player + x_move);
 	next_idx[1] = convert_todx(data->play->y_player + y_move);
+	if (next_idx[1] < 0 || next_idx[0] < 0)
+		return (0);
 	if (data->map[next_idx[1]])
 	{
 		if (next_idx[0] >= (int)ft_strlen(data->map[next_idx[1]]) || data->map[next_idx[1]][next_idx[0]] == '1')

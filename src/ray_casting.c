@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/03 18:42:00 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:49:14 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	casting(t_data *data)
 
 	id = 0;
 	data->rays->angle = data->play->view_angle - (FOV / 2);
-	normilize_angle(&data->rays->angle);
 	while (id <= NUM_RAYS)
 	{
-		data->rays->angle += VAR_ANG;
+		normilize_angle(&data->rays->angle);
 		init_rayData(data);
-		draw_2d_line(data, data->play->x_player + (cos(data->rays->angle) * LINE_LEN), data->play->y_player + (sin(data->rays->angle) * LINE_LEN), GREY);
+		break;
+		data->rays->angle += VAR_ANG;
 		id++;
 	}
 }
@@ -39,15 +39,17 @@ void	horizontal_inter(t_data *data)
 	t_index		st_inter;
 	t_index		step;
 
-	st_inter.dy = floorf(data->play->y_player / TILE_SIZE) * TILE_SIZE;
+	st_inter.dy = floor(data->play->y_player / TILE_SIZE) * TILE_SIZE;
 	st_inter.dx = data->play->x_player + (data->play->y_player - st_inter.dy) / tan(data->rays->angle);
-	step.dx = 0;
-	step.dy = 0;
+	step.dx = st_inter.dx;
+	step.dy = st_inter.dy;
 	while (check_isWall(data, step.dx, step.dy))
 	{
 		step.dy = TILE_SIZE;
-		step.dy = TILE_SIZE / tan(data->rays->angle);
+		step.dx = TILE_SIZE / tan(data->rays->angle);
 		st_inter.dy += step.dy;
 		st_inter.dx += step.dx;
 	}
+	data->rays->distance = sqrtf(data->play->x_player - st_inter.dx) + sqrtf(data->play->y_player - st_inter.dy);
+	draw_2d_line(data, st_inter.dx, st_inter.dy, GREY);
 }
