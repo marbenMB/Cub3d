@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/05 21:06:26 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:30:15 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_destroy_all(t_data *data)
 
 int	update_display(t_data *data)
 {
-	play_key(data);
 	row_press(data);
+	play_key(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img->img);
 	ft_mlx_ptr_init(data, 1);
