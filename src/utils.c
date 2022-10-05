@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 20:33:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/02 18:17:52 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:41:31 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	normilize_angle(double *angle)
 {
 	*angle = fmod(*angle, (2 * M_PI));
-	if (angle < 0)
+	if (*angle < 0)
 		*angle = *angle + (2 * M_PI);
 }
 int	convert_todx(double a)

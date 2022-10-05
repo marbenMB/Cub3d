@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/03 18:38:55 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:55:16 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	play_key(t_data *data);
 void	row_press(t_data *data);
 	//	----------------	FT_CHECK 	----------------  //
 int		check_isWall(t_data *data, double x_move, double y_move);
+int		check_rayWall(t_data *data, double x_move, double y_move);
 void	check_playFace(t_ray *ray);
 	//	----------------	FT_UTILS 	----------------  //
 void	normilize_angle(double *angle);

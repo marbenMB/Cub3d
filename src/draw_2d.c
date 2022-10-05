@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/04 17:16:58 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:18:33 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 
 void	draw_2d_player(t_data *data, int color)
 {
-	if (check_isWall(data, data->play->x_move, data->play->y_move))
+	if (!check_isWall(data, data->play->x_move, data->play->y_move))
 	{
 		data->play->x_player += data->play->x_move;
 		data->play->y_player += data->play->y_move;
@@ -87,8 +87,8 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	double	xinc;
 	double	yinc;
 
-	dx = data->play->x_player - x2;
-	dy = data->play->y_player - y2;
+	dx = x2 - data->play->x_player;
+	dy = y2 - data->play->y_player;
 	if (fabs(dx) > fabs(dy))
 		steps = fabs(dx);
 	else
