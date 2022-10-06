@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 20:33:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/05 20:41:31 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:54:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,20 @@ void	normilize_angle(double *angle)
 	if (*angle < 0)
 		*angle = *angle + (2 * M_PI);
 }
+
 int	convert_todx(double a)
 {
 	return ((int)(a / TILE_SIZE));
+}
+
+int	tab_len(char **tab)
+{
+	int		i;
+
+	i = -1;
+	while (tab[++i])
+		;
+	return (i);
 }
 
 void	free_stc(t_data *data)

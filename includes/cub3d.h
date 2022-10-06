@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 10:29:07 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:54:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	check_playFace(t_ray *ray);
 	//	----------------	FT_UTILS 	----------------  //
 void	normilize_angle(double *angle);
 int		convert_todx(double a);
+int		tab_len(char **tab);
 void	free_stc(t_data *data);
 void	free_tab(char **tab);
 	//	----------------	RAY_CAST 	----------------  //

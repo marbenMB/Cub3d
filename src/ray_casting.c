@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 11:27:16 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:01:29 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	casting(t_data *data)
 
 		normilize_angle(&data->rays->angle);
 		init_rayData(data);
-		break;
+		// break;
 		data->rays->angle += VAR_ANG;
 		id++;
 	}
@@ -64,7 +64,7 @@ void	horizontal_inter(t_data *data)
 		st_inter.dy += step.dy;
 		st_inter.dx += step.dx;
 	}
-	data->rays->distance = sqrtf(st_inter.dx + data->play->x_player) + sqrtf(st_inter.dy + data->play->y_player);
+	data->rays->distance = sqrtf(pow((st_inter.dx - data->play->x_player), 2) + pow((st_inter.dy - data->play->y_player), 2));
 	data->rays->x_inter = st_inter.dx;
 	data->rays->y_inter = st_inter.dy;
 	data->rays->h_or_v = 1;
@@ -92,12 +92,12 @@ void	vertical_inter(t_data *data)
 		step.dy *= -1;
 	if (step.dy < 0 && data->rays->face.down)
 		step.dy *= -1;
-	while (!check_rayWall(data, st_inter.dx , st_inter.dy))
+	while (!check_rayWall(data, st_inter.dx - check, st_inter.dy))
 	{
 		st_inter.dx += step.dx;
 		st_inter.dy += step.dy;
 	}
-	st_inter.var = sqrtf(st_inter.dx + data->play->x_player) + sqrtf(st_inter.dy + data->play->y_player);
+	st_inter.var = sqrtf(pow((st_inter.dx - data->play->x_player), 2) + pow((st_inter.dy - data->play->y_player), 2));
 	if (st_inter.var < data->rays->distance)
 	{
 		data->rays->distance = st_inter.var;

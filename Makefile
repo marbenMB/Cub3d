@@ -2,7 +2,7 @@ NAME = cub3d
 
 NAME_B = cub3d_bonus
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address -Ofast
 
 CC = cc
 

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 10:41:57 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:56:50 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ int	check_rayWall(t_data *data, double x_move, double y_move)
 
 	next_idx[0] = convert_todx(x_move);
 	next_idx[1] = convert_todx(y_move);
-	printf("->	%d	|	%d\n", next_idx[0], next_idx[1]);
 	if (x_move > WIDTH || x_move < 0 || y_move > HEIGHT || y_move < 0)
 		return (-1);
-	if (next_idx[1] < 0 || next_idx[0] < 0)
+	if (next_idx[1] < 0 || next_idx[0] < 0 || next_idx[1] >= tab_len(data->map))
 		return (1);
 	if (data->map[next_idx[1]])
 	{
