@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/03 18:34:35 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 10:30:48 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_index
 	int		y;
 	double	dx;
 	double	dy;
+	double	var;
 }	t_index;
 
 typedef struct	s_img {

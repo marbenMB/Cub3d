@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/05 18:55:16 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/06 10:29:07 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	free_tab(char **tab);
 void	casting(t_data *data);
 void	init_rayData(t_data *data);
 void	horizontal_inter(t_data *data);
+void	vertical_inter(t_data *data);
 	//	---------------- RAY_CAST_UTILS  ----------------  //
 // t_ray	*lst_new(int id, double angle);
 // void	lst_add_back(t_ray **lst, t_ray *new);
