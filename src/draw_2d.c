@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:39:09 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:37:43 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->img->addr + (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	if ((x > 0 && x < WIDTH) && (y > 0 && y < HEIGHT))
+	{
+		dst = data->img->addr + (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
+	}
 }
 
 void	drawing(t_data *data)
