@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:37:21 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:04:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	casting(t_data *data);
 void	init_rayData(t_data *data);
 void	horizontal_inter(t_data *data);
 void	vertical_inter(t_data *data);
-	//	---------------- RAY_CAST_UTILS  ----------------  //
-// t_ray	*lst_new(int id, double angle);
-// void	lst_add_back(t_ray **lst, t_ray *new);
+	//	---------------- RENDeRING FUNC  ----------------  //
+void	rendering_wall(t_data *data);
+void	draw_3d_wall(t_data *data, double proj_p);
 #endif

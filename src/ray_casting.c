@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:42:56 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:11:04 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 void	casting(t_data *data)
 {
-	int		id;
-
-	id = 0;
+	data->rays->id = 0;;
 	data->rays->angle = data->play->view_angle - (FOV / 2);
-	while (id <= NUM_RAYS)
+	while (data->rays->id <= NUM_RAYS)
 	{
 
 		normilize_angle(&data->rays->angle);
 		init_rayData(data);
-		// break;
 		data->rays->angle += VAR_ANG;
-		id++;
+		data->rays->id++;
 	}
 }
 
@@ -34,6 +31,8 @@ void	init_rayData(t_data *data)
 	check_playFace(data->rays);
 	horizontal_inter(data);
 	vertical_inter(data);
+	rendering_wall(data);
+	printf("%d\n",data->rays->id);
 	draw_2d_line(data, data->play->player, data->rays->inter, GREY);
 }
 

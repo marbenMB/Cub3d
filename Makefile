@@ -15,7 +15,7 @@ SRC_DIR = src
 UTILS_DIR = utils/
 
 SRC = $(UTILS_DIR)/get_next_line.c $(UTILS_DIR)/get_next_line_utils.c $(SRC_DIR)/cub3d.c $(SRC_DIR)/read_map.c $(SRC_DIR)/ft_error.c $(SRC_DIR)/draw_2d.c \
-		$(SRC_DIR)/key_handling.c $(SRC_DIR)/player_data.c $(SRC_DIR)/utils.c $(SRC_DIR)/ft_check.c $(SRC_DIR)/ray_casting.c 
+		$(SRC_DIR)/key_handling.c $(SRC_DIR)/player_data.c $(SRC_DIR)/utils.c $(SRC_DIR)/ft_check.c $(SRC_DIR)/ray_casting.c $(SRC_DIR)/rendering.c
 
 OBJ = $(SRC:%.c=%.o)
 
