@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:19:49 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 19:42:58 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:54:54 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@
 #define BLACK 0x000000
 #define YELLOW 0xffff00
 #define RED 0xff0000
-#define BLU  0x1acbee
+#define BLU  0x64e8ee
 #define PINK 0xee1aae
-#define GREY 0xe4e2e4
+#define GREY 0xadadad
+#define GREEN 0x55ecb3
 
 //	***		KEYS
 #define	ESC 53

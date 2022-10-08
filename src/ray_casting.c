@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 18:29:05 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:53:56 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	casting(t_data *data)
 	data->rays->angle = data->play->view_angle - (FOV / 2);
 	while (data->rays->id <= NUM_RAYS)
 	{
-
 		normilize_angle(&data->rays->angle);
 		init_rayData(data);
 		data->rays->angle += VAR_ANG;

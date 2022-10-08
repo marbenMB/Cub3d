@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 18:37:49 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:45:26 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void    init_angle(t_data *data, char player);
 	//	----------------	FT_DRAW 	----------------  //
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	drawing(t_data *data);
+void	draw_bg(t_data *data);
 void	draw_2d(t_data *data);
 void	draw_2d_cube(t_data *data, int x, int y, int color);
 void	draw_2d_player(t_data *data, int color);

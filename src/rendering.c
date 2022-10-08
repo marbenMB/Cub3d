@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 19:44:11 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:53:37 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rendering_wall(t_data *data)
 
 	dist_ppp = (WIDTH / 2) / tan(FOV / 2);
 	proj_p = (TILE_SIZE / data->rays->distance) * dist_ppp;
-	draw_3d_wall(data, proj_p, BLU);
+	draw_3d_wall(data, proj_p, GREY);
 }
 
 void	draw_3d_wall(t_data *data, double proj_p, int color)

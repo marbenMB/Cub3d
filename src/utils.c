@@ -6,11 +6,22 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 20:33:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 11:54:19 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 22:21:33 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if ((x > 0 && x < WIDTH) && (y > 0 && y < HEIGHT))
+	{
+		dst = data->img->addr + (y * data->img->line_length + x * (data->img->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
+	}
+}
 
 void	normilize_angle(double *angle)
 {
