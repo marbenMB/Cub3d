@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 11:59:00 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:31:08 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 
 void	draw_2d_player(t_data *data, int color)
 {
-	if (!check_isWall(data, data->play->x_move, data->play->y_move))
+	if (!check_isWall(data, data->play->move.dx, data->play->move.dy))
 	{
-		data->play->x_player += data->play->x_move;
-		data->play->y_player += data->play->y_move;
+		data->play->player.dx += data->play->move.dx;
+		data->play->player.dy += data->play->move.dy;
 	}
 	casting(data);
-	draw_2d_line(data, data->play->x_player + (cos(data->play->view_angle) * LINE_LEN), data->play->y_player + (sin(data->play->view_angle) * LINE_LEN), BLACK);
-	ft_mlx_pixel_put(data, data->play->x_player , data->play->y_player , color);
-	data->play->x_move = 0;
-	data->play->y_move = 0;
+	draw_2d_line(data, data->play->player.dx + (cos(data->play->view_angle) * LINE_LEN), data->play->player.dy + (sin(data->play->view_angle) * LINE_LEN), BLACK);
+	ft_mlx_pixel_put(data, data->play->player.dx , data->play->player.dy , color);
+	data->play->move.dx = 0;
+	data->play->move.dy = 0;
 }
 
 void	draw_2d_line(t_data *data, double x2, double y2, int color)
@@ -88,8 +88,8 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	double	xinc;
 	double	yinc;
 
-	dx = x2 - data->play->x_player;
-	dy = y2 - data->play->y_player;
+	dx = x2 - data->play->player.dx;
+	dy = y2 - data->play->player.dy;
 	if (fabs(dx) > fabs(dy))
 		steps = fabs(dx);
 	else
@@ -102,7 +102,7 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	i = 0;
 	while (i <= steps)
 	{
-		ft_mlx_pixel_put(data, round(data->play->x_player + xinc * i), round(data->play->y_player + yinc * i), color);
+		ft_mlx_pixel_put(data, round(data->play->player.dx + xinc * i), round(data->play->player.dy + yinc * i), color);
 		i++;
 	}
 }

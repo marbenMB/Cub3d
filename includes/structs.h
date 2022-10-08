@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 10:30:48 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:26:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 typedef struct	s_index
 {
-	int		x;
-	int		y;
 	double	dx;
 	double	dy;
 	double	var;
@@ -34,10 +32,8 @@ typedef struct	s_img {
 
 typedef struct s_play
 {
-	double	x_player;
-	double	y_player;
-	double	x_move;
-	double	y_move;
+	t_index	player;
+	t_index	move;
 	double	view_angle;
 }	t_play;
 

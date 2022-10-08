@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 12:01:29 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:29:47 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	horizontal_inter(t_data *data)
 	t_index		step;
 	int			check;
 
-	st_inter.dy = floor(data->play->y_player / TILE_SIZE) * TILE_SIZE;
+	st_inter.dy = floor(data->play->player.dy / TILE_SIZE) * TILE_SIZE;
 	if (data->rays->face.down)
 		st_inter.dy += TILE_SIZE;
-	st_inter.dx = data->play->x_player + (st_inter.dy - data->play->y_player) / tan(data->rays->angle);
+	st_inter.dx = data->play->player.dx + (st_inter.dy - data->play->player.dy) / tan(data->rays->angle);
 	step.dy = TILE_SIZE;
 	check = 0;
 	if (data->rays->face.up)
@@ -64,7 +64,7 @@ void	horizontal_inter(t_data *data)
 		st_inter.dy += step.dy;
 		st_inter.dx += step.dx;
 	}
-	data->rays->distance = sqrtf(pow((st_inter.dx - data->play->x_player), 2) + pow((st_inter.dy - data->play->y_player), 2));
+	data->rays->distance = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
 	data->rays->x_inter = st_inter.dx;
 	data->rays->y_inter = st_inter.dy;
 	data->rays->h_or_v = 1;
@@ -76,10 +76,10 @@ void	vertical_inter(t_data *data)
 	t_index		step;
 	int			check;
 
-	st_inter.dx = floor(data->play->x_player / TILE_SIZE) * TILE_SIZE;
+	st_inter.dx = floor(data->play->player.dx / TILE_SIZE) * TILE_SIZE;
 	if (data->rays->face.right)
 		st_inter.dx += TILE_SIZE;
-	st_inter.dy = data->play->y_player + (st_inter.dx - data->play->x_player) * tan(data->rays->angle);
+	st_inter.dy = data->play->player.dy + (st_inter.dx - data->play->player.dx) * tan(data->rays->angle);
 	step.dx = TILE_SIZE;
 	check = 0;
 	if (data->rays->face.left)
@@ -97,7 +97,7 @@ void	vertical_inter(t_data *data)
 		st_inter.dx += step.dx;
 		st_inter.dy += step.dy;
 	}
-	st_inter.var = sqrtf(pow((st_inter.dx - data->play->x_player), 2) + pow((st_inter.dy - data->play->y_player), 2));
+	st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
 	if (st_inter.var < data->rays->distance)
 	{
 		data->rays->distance = st_inter.var;

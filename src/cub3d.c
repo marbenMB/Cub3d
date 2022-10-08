@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/03 16:59:20 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:27:25 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	init_data(t_data *data)
 	data->map_width = 0;
 	data->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	data->play = (t_play *)ft_calloc(1, sizeof(t_play));
-	data->play->x_player = -1;
-	data->play->y_player = -1;
-	data->play->x_move = 0;
-	data->play->y_move = 0;
+	data->play->player.dx = -1;
+	data->play->player.dy = -1;
+	data->play->move.dx = 0;
+	data->play->move.dy = 0;
 	data->play->view_angle = tan(M_PI / 2);
 	data->hooks = (t_key *)ft_calloc(1, sizeof(t_key));
 	data->hooks->key_donw = 0;

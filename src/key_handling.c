@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/06 11:59:45 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:31:08 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,24 @@ void	play_key(t_data *data)
 	idx[1] = STEP * sin(data->play->view_angle);
 	if (data->hooks->key_up)
 	{
-        data->play->y_move = idx[1];
-		data->play->x_move = idx[0];
+        data->play->move.dy = idx[1];
+		data->play->move.dx = idx[0];
 		
 	}
     if (data->hooks->key_donw)
 	{
-        data->play->y_move = -idx[1];
-		data->play->x_move = -idx[0];
+        data->play->move.dy = -idx[1];
+		data->play->move.dx = -idx[0];
 	}
 	if (data->hooks->key_right)
 	{
-        data->play->y_move = -idx[0];
-		data->play->x_move = idx[1];
+        data->play->move.dy = -idx[0];
+		data->play->move.dx = idx[1];
 	}
 	if (data->hooks->key_left)
 	{
-        data->play->y_move = idx[0];
-		data->play->x_move = -idx[1];
+        data->play->move.dy = idx[0];
+		data->play->move.dx = -idx[1];
 	}
 }
 
