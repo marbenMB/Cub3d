@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:29:47 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:42:56 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_rayData(t_data *data)
 	check_playFace(data->rays);
 	horizontal_inter(data);
 	vertical_inter(data);
-	draw_2d_line(data, data->rays->x_inter, data->rays->y_inter, GREY);
+	draw_2d_line(data, data->play->player, data->rays->inter, GREY);
 }
 
 void	horizontal_inter(t_data *data)
@@ -65,8 +65,8 @@ void	horizontal_inter(t_data *data)
 		st_inter.dx += step.dx;
 	}
 	data->rays->distance = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
-	data->rays->x_inter = st_inter.dx;
-	data->rays->y_inter = st_inter.dy;
+	data->rays->inter.dx = st_inter.dx;
+	data->rays->inter.dy = st_inter.dy;
 	data->rays->h_or_v = 1;
 }
 
@@ -101,8 +101,8 @@ void	vertical_inter(t_data *data)
 	if (st_inter.var < data->rays->distance)
 	{
 		data->rays->distance = st_inter.var;
-		data->rays->x_inter = st_inter.dx;
-		data->rays->y_inter = st_inter.dy;
+		data->rays->inter.dx = st_inter.dx;
+		data->rays->inter.dy = st_inter.dy;
 		data->rays->h_or_v = 2;
 	}
 }

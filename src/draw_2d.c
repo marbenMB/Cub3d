@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:31:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:39:09 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,23 @@ void	draw_2d_cube(t_data *data, int x, int y, int color)
 
 void	draw_2d_player(t_data *data, int color)
 {
+	t_index	next_pt;
+	
 	if (!check_isWall(data, data->play->move.dx, data->play->move.dy))
 	{
 		data->play->player.dx += data->play->move.dx;
 		data->play->player.dy += data->play->move.dy;
 	}
+	next_pt.dx = data->play->player.dx + (cos(data->play->view_angle) * LINE_LEN);
+	next_pt.dy = data->play->player.dy + (sin(data->play->view_angle) * LINE_LEN);
 	casting(data);
-	draw_2d_line(data, data->play->player.dx + (cos(data->play->view_angle) * LINE_LEN), data->play->player.dy + (sin(data->play->view_angle) * LINE_LEN), BLACK);
+	draw_2d_line(data, data->play->player, next_pt, BLACK);
 	ft_mlx_pixel_put(data, data->play->player.dx , data->play->player.dy , color);
 	data->play->move.dx = 0;
 	data->play->move.dy = 0;
 }
 
-void	draw_2d_line(t_data *data, double x2, double y2, int color)
+void	draw_2d_line(t_data *data, t_index first, t_index next, int color)
 {
 	double	dx;
 	double	dy;
@@ -88,8 +92,8 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	double	xinc;
 	double	yinc;
 
-	dx = x2 - data->play->player.dx;
-	dy = y2 - data->play->player.dy;
+	dx = next.dx - first.dx;
+	dy = next.dy - first.dy;
 	if (fabs(dx) > fabs(dy))
 		steps = fabs(dx);
 	else
@@ -102,7 +106,7 @@ void	draw_2d_line(t_data *data, double x2, double y2, int color)
 	i = 0;
 	while (i <= steps)
 	{
-		ft_mlx_pixel_put(data, round(data->play->player.dx + xinc * i), round(data->play->player.dy + yinc * i), color);
+		ft_mlx_pixel_put(data, round(first.dx + xinc * i), round(first.dy + yinc * i), color);
 		i++;
 	}
 }

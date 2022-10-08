@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:26:55 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:40:23 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ typedef struct s_ray
 {
 	int				id;
 	double			angle;
-	double			x_inter;
-	double			y_inter;
+	t_index			inter;
 	double			distance;
 	t_face_ray		face;
 	int				h_or_v;
