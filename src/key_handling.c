@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:31:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:41:33 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void	play_key(t_data *data)
 	}
 	if (data->hooks->key_right)
 	{
-        data->play->move.dy = -idx[0];
-		data->play->move.dx = idx[1];
+        data->play->move.dy = idx[0];
+		data->play->move.dx = -idx[1];
 	}
 	if (data->hooks->key_left)
 	{
-        data->play->move.dy = idx[0];
-		data->play->move.dx = -idx[1];
+        data->play->move.dy = -idx[0];
+		data->play->move.dx = idx[1];
 	}
 }
 
