@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:53:37 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/09 01:50:21 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	rendering_wall(t_data *data)
 	double  proj_p;
 
 	dist_ppp = (WIDTH / 2) / tan(FOV / 2);
+	data->rays->distance *= cos(data->rays->angle - data->play->view_angle);
 	proj_p = (TILE_SIZE / data->rays->distance) * dist_ppp;
 	draw_3d_wall(data, proj_p, GREY);
 }
