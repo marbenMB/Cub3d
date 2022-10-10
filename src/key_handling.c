@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:19:39 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 19:41:33 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:38:25 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ int	update_display(t_data *data)
 
 int ft_key_press(int key, t_data *data)
 {
-    
+    if (key == 18)
+	{
+		if (!data->if_2d)
+			data->if_2d = true;
+		else
+			data->if_2d = false;
+	}
 	if (key == ESC)
         ft_destroy_all(data);
 	check_key_press(key, data);

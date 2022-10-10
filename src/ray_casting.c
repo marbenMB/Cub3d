@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 21:53:56 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:35:07 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_rayData(t_data *data)
 	horizontal_inter(data);
 	vertical_inter(data);
 	rendering_wall(data);
-	draw_2d_line(data, data->play->player, data->rays->inter, GREY);
 }
 
 void	horizontal_inter(t_data *data)

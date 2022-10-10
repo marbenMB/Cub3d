@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 18:37:46 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:34:15 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_data(t_data *data)
 	data->hooks->row_left = 0;
 	data->hooks->row_right = 0;
 	data->rays = (t_ray *)ft_calloc(1, sizeof(t_ray));
+	data->if_2d = false;
 }
 
 void	ft_mlx_ptr_init(t_data *data, int call)

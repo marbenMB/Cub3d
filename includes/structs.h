@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:40:23 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:33:36 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ typedef struct s_ray
 	double			distance;
 	t_face_ray		face;
 	int				h_or_v;
-	// struct s_ray	*next;
-	// double	x_best;
-	// double	y_best;
 }	t_ray;
+
+typedef struct s_texture
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	t_index	size;
+	
+}	t_texture;
 
 typedef struct s_data
 {
@@ -79,6 +86,7 @@ typedef struct s_data
 	t_play	*play;
 	t_key	*hooks;
 	t_ray	*rays;
+	bool	if_2d;
 	
 }	t_data;
 
