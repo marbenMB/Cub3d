@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/10 11:33:36 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:26:44 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct	s_index
 	double	dy;
 	double	var;
 }	t_index;
+
+typedef	struct	s_int_dx
+{
+	int	x;
+	int	y;
+}	t_int_dx;
 
 typedef struct	s_img {
 	void	*img;
@@ -63,30 +69,40 @@ typedef struct s_ray
 	double			distance;
 	t_face_ray		face;
 	int				h_or_v;
+	double			wall_height;
 }	t_ray;
 
 typedef struct s_texture
 {
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	t_index	size;
-	
+	char		*nor_f;
+	char		*sou_f;
+	char		*eas_f;
+	char		*wes_f;
+	t_img		*tex_img;
+	int			*north;
+	int			*south;
+	int			*east;
+	int			*west;
+	double		zoom_factor;
+	t_int_dx	n_size;
+	t_int_dx	s_size;
+	t_int_dx	e_size;
+	t_int_dx	w_size;
 }	t_texture;
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-    char    **map;
-	int		map_height;
-	int		map_width;
-	t_img	*img;
-	t_play	*play;
-	t_key	*hooks;
-	t_ray	*rays;
-	bool	if_2d;
+	void		*mlx;
+	void		*win;
+    char    	**map;
+	int			map_height;
+	int			map_width;
+	t_img		*img;
+	t_play		*play;
+	t_key		*hooks;
+	t_ray		*rays;
+	t_texture	*texture;
+	bool		if_2d;
 	
 }	t_data;
 

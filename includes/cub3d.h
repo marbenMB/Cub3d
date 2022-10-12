@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 23:45:26 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:34:15 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	read_map(int fd, t_data *data);
 	//	----------------	PLAY_DATA 	----------------  //
 void	get_player_data(t_data *data);
 void    init_angle(t_data *data, char player);
+void	opening_texture(t_data *data);
 	//	----------------	FT_DRAW 	----------------  //
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	drawing(t_data *data);
@@ -75,5 +76,6 @@ void	vertical_inter(t_data *data);
 	//	---------------- RENDeRING FUNC  ----------------  //
 void	rendering_wall(t_data *data);
 void	draw_3d_wall(t_data *data, double proj_p, int color);
+int		rendering_texColor(t_data *data, double tex_x, double tex_y);
 
 #endif

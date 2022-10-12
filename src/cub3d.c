@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/10 11:34:15 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:39:39 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 	get_parced_map(&data, av[1]);
 	get_player_data(&data);
 	ft_mlx_ptr_init(&data, 0);
+	opening_texture(&data);
 	drawing(&data);
 	ft_mlx_hooking(&data);
 	mlx_loop(data.mlx);
@@ -60,12 +61,15 @@ void	init_data(t_data *data)
 	data->hooks->row_right = 0;
 	data->rays = (t_ray *)ft_calloc(1, sizeof(t_ray));
 	data->if_2d = false;
-}
+
+	data->texture = (t_texture *)ft_calloc(1, sizeof(t_texture));
+	data->texture->tex_img = (t_img *)ft_calloc(1, sizeof(t_img));
+} 
 
 void	ft_mlx_ptr_init(t_data *data, int call)
 {
 	if (!call)
-	{	
+	{
 		data->mlx = mlx_init();
 		data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "+> MAR_BEN <+");
 	}
