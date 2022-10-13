@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/12 18:44:37 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:23:29 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    init_angle(t_data *data, char player)
 
 void	opening_texture(t_data *data)
 {
-	data->texture->nor_f = ft_strdup("textures/wall_1.xpm");
+	data->texture->nor_f = ft_strdup("textures/pillar.xpm");
 	if (open(data->texture->nor_f, O_RDONLY) < 0)
 		error_exit("Texture not found", 1);
 	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->nor_f, &data->texture->n_size.x, &data->texture->n_size.y);

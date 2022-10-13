@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/13 17:42:08 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:21:56 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,21 @@ int	rendering_texColor(t_data *data, int tex_y)
 	t_int_dx	i_tex;
 	double	zoom_factor;
 
-	if (data->rays->wall_height > HEIGHT)
-		tex_y = data->rays->wall_height - HEIGHT;
-	zoom_factor = data->texture->n_size.y / data->rays->wall_height;
-	tex.dy = tex_y;
+	zoom_factor = (double)data->texture->n_size.y / data->rays->wall_height;
+	tex.dy = tex_y + ((data->rays->wall_height / 2) - (HEIGHT / 2));
+	if (tex.dy < 0)
+		tex.dy = 0;
 	tex.dx = data->rays->inter.dx;
 	if (data->rays->h_or_v == 2)
 		tex.dx = data->rays->inter.dy;
+	tex.dx /= TILE_SIZE;
 	tex.dx -= floor(tex.dx);
 	tex.dx *= data->texture->n_size.x;
-	tex.dy *= zoom_factor * data->texture->n_size.x;
+	tex.dy *=  zoom_factor;
+	tex.dy = floor(tex.dy);
+	tex.dy *= data->texture->n_size.x;
 	i_tex.x = (int)tex.dx;
 	i_tex.y = (int)tex.dy;
-	printf("-> %d | %d \n+> %d | %d\n", data->texture->n_size.x, data->texture->n_size.y, i_tex.x, i_tex.y);
 
-	// return (data->texture->north[i_tex.x + i_tex.y]);
-	return (GREY);
+	return (data->texture->north[i_tex.x + i_tex.y]);
 }
