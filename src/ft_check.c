@@ -81,3 +81,22 @@ void	check_playFace(t_ray *ray)
 		ray->face.right = true;
 	}
 }
+
+int	*check_TexFace(t_data *data)
+{
+	if (data->rays->h_or_v == HOR_INTER)
+	{
+		if (data->rays->face.down)
+			return (data->texture->north);
+		if (data->rays->face.up)
+			return (data->texture->south);
+	}
+	if (data->rays->h_or_v == VER_INTER)
+	{
+		if (data->rays->face.left)
+			return (data->texture->east);
+		if (data->rays->face.right)
+			return (data->texture->west);
+	}
+	return (data->texture->north);
+}

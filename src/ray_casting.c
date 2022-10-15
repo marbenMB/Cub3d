@@ -63,7 +63,7 @@ void	horizontal_inter(t_data *data)
 	data->rays->distance = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
 	data->rays->inter.dx = st_inter.dx;
 	data->rays->inter.dy = st_inter.dy;
-	data->rays->h_or_v = 1;
+	data->rays->h_or_v = HOR_INTER;
 }
 
 void	vertical_inter(t_data *data)
@@ -99,6 +99,6 @@ void	vertical_inter(t_data *data)
 		data->rays->distance = st_inter.var;
 		data->rays->inter.dx = st_inter.dx;
 		data->rays->inter.dy = st_inter.dy;
-		data->rays->h_or_v = 2;
+		data->rays->h_or_v = VER_INTER;
 	}
 }

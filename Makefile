@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address -Ofast
 
 CC = cc
 
-FRAM = -lmlx -framework OpenGL -framework AppKit
+FRAM = /Users/marouanebenbajja/MiniLibX/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit
 
 ########## PATH ########
 

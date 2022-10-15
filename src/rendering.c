@@ -41,13 +41,13 @@ void	draw_3d_wall(t_data *data, double proj_p, int color)
 		next_pt.dy = HEIGHT;
 	while (first_pt.dy <= next_pt.dy)
 	{
-		color = rendering_texColor(data, first_pt.dy);
+		color = rendering_texColor(data, first_pt.dy, check_TexFace(data));
 		ft_mlx_pixel_put(data, data->rays->id, first_pt.dy, color);
 		first_pt.dy++;
 	}
 }
 
-int	rendering_texColor(t_data *data, int tex_y)
+int	rendering_texColor(t_data *data, int tex_y, int *tex_buff)
 {
 	t_index		tex;
 	t_int_dx	i_tex;
@@ -58,7 +58,7 @@ int	rendering_texColor(t_data *data, int tex_y)
 	if (tex.dy < 0)
 		tex.dy = 0;
 	tex.dx = data->rays->inter.dx;
-	if (data->rays->h_or_v == 2)
+	if (data->rays->h_or_v == VER_INTER)
 		tex.dx = data->rays->inter.dy;
 	tex.dx /= TILE_SIZE;
 	tex.dx -= floor(tex.dx);
@@ -69,5 +69,5 @@ int	rendering_texColor(t_data *data, int tex_y)
 	i_tex.x = (int)tex.dx;
 	i_tex.y = (int)tex.dy;
 
-	return (data->texture->north[i_tex.x + i_tex.y]);
+	return (tex_buff[i_tex.x + i_tex.y]);
 }

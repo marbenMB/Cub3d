@@ -58,4 +58,8 @@
 //  ***     ANGLE
 #define ADD_ANGLE 0.05
 
+//	***		Inter_INTS
+#define	HOR_INTER 1
+#define	VER_INTER 2
+
 #endif

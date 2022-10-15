@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <mlx.h>
+# include "/Users/marouanebenbajja/MiniLibX/minilibx_macos/mlx.h"
 # include <math.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
@@ -62,6 +62,7 @@ void	row_press(t_data *data);
 int		check_isWall(t_data *data, double x_move, double y_move);
 int		check_rayWall(t_data *data, double x_move, double y_move);
 void	check_playFace(t_ray *ray);
+int		*check_TexFace(t_data *data);
 	//	----------------	FT_UTILS 	----------------  //
 void	normilize_angle(double *angle);
 int		convert_todx(double a);
@@ -76,6 +77,6 @@ void	vertical_inter(t_data *data);
 	//	---------------- RENDeRING FUNC  ----------------  //
 void	rendering_wall(t_data *data);
 void	draw_3d_wall(t_data *data, double proj_p, int color);
-int		rendering_texColor(t_data *data, int tex_y);
+int		rendering_texColor(t_data *data, int tex_y, int *tex_buff);
 
 #endif

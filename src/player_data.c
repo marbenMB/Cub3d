@@ -50,9 +50,27 @@ void    init_angle(t_data *data, char player)
 
 void	opening_texture(t_data *data)
 {
-	data->texture->nor_f = ft_strdup("textures/pillar.xpm");
-	if (open(data->texture->nor_f, O_RDONLY) < 0)
+	data->texture->nor_f = ft_strdup("textures/wall_1.xpm");
+	data->texture->sou_f = ft_strdup("textures/wall_2.xpm");
+	data->texture->wes_f = ft_strdup("textures/wall_3.xpm");
+	data->texture->eas_f = ft_strdup("textures/wall_4.xpm");
+	if (open(data->texture->nor_f, O_RDONLY) < 0 || open(data->texture->wes_f, O_RDONLY) < 0 || \
+		open(data->texture->eas_f, O_RDONLY) < 0 || open(data->texture->sou_f, O_RDONLY) < 0)
 		error_exit("Texture not found", 1);
+	
+	//	North Textures
 	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->nor_f, &data->texture->n_size.x, &data->texture->n_size.y);
 	data->texture->north = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	
+	// South Texture
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->sou_f, &data->texture->s_size.x, &data->texture->s_size.y);
+	data->texture->south = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	
+	//	West Texture
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->wes_f, &data->texture->w_size.x, &data->texture->w_size.y);
+	data->texture->west = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	
+	//	East Texture
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->eas_f, &data->texture->e_size.x, &data->texture->e_size.y);
+	data->texture->east = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
 }
