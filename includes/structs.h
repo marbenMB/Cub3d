@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/12 18:26:44 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:15:22 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,21 @@ typedef struct s_ray
 	double			wall_height;
 }	t_ray;
 
+typedef	struct s_texFace
+{
+	char		*file;
+	int			*buffer;
+	double		zoom_factor;
+	t_int_dx	size;
+}	t_texFace;
+
 typedef struct s_texture
 {
-	char		*nor_f;
-	char		*sou_f;
-	char		*eas_f;
-	char		*wes_f;
 	t_img		*tex_img;
-	int			*north;
-	int			*south;
-	int			*east;
-	int			*west;
-	double		zoom_factor;
-	t_int_dx	n_size;
-	t_int_dx	s_size;
-	t_int_dx	e_size;
-	t_int_dx	w_size;
+	t_texFace	*north;
+	t_texFace	*south;
+	t_texFace	*west;
+	t_texFace	*east;
 }	t_texture;
 
 typedef struct s_data

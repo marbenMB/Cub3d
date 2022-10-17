@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/08 15:29:47 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:21:53 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	check_playFace(t_ray *ray)
 	}
 }
 
-int	*check_TexFace(t_data *data)
+t_texFace	*check_TexFace(t_data *data)
 {
 	if (data->rays->h_or_v == HOR_INTER)
 	{
@@ -98,5 +98,5 @@ int	*check_TexFace(t_data *data)
 		if (data->rays->face.right)
 			return (data->texture->west);
 	}
-	return (data->texture->north);
+	return (NULL);
 }

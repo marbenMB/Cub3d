@@ -6,7 +6,7 @@
 #    By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 11:22:32 by mbenbajj          #+#    #+#              #
-#    Updated: 2022/10/10 11:22:33 by mbenbajj         ###   ########.fr        #
+#    Updated: 2022/10/17 12:10:01 by mbenbajj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address -Ofast
 
 CC = cc
 
-FRAM = /Users/marouanebenbajja/MiniLibX/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit
+FRAM = -lmlx -framework OpenGL -framework AppKit
 
 ########## PATH ########
 

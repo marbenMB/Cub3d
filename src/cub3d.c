@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:09 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/12 18:39:39 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:23:46 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void	init_data(t_data *data)
 
 	data->texture = (t_texture *)ft_calloc(1, sizeof(t_texture));
 	data->texture->tex_img = (t_img *)ft_calloc(1, sizeof(t_img));
+	data->texture->east = (t_texFace *)ft_calloc(1, sizeof(t_texFace));
+	data->texture->west = (t_texFace *)ft_calloc(1, sizeof(t_texFace));
+	data->texture->north = (t_texFace *)ft_calloc(1, sizeof(t_texFace));
+	data->texture->south = (t_texFace *)ft_calloc(1, sizeof(t_texFace));
 } 
 
 void	ft_mlx_ptr_init(t_data *data, int call)

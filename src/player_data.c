@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/13 18:23:29 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:34:01 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,31 @@ void    init_angle(t_data *data, char player)
 
 void	opening_texture(t_data *data)
 {
-	data->texture->nor_f = ft_strdup("textures/wall_1.xpm");
-	data->texture->sou_f = ft_strdup("textures/wall_2.xpm");
-	data->texture->wes_f = ft_strdup("textures/wall_3.xpm");
-	data->texture->eas_f = ft_strdup("textures/wall_4.xpm");
-	if (open(data->texture->nor_f, O_RDONLY) < 0 || open(data->texture->wes_f, O_RDONLY) < 0 || \
-		open(data->texture->eas_f, O_RDONLY) < 0 || open(data->texture->sou_f, O_RDONLY) < 0)
+	data->texture->north->file = ft_strdup("textures/pexels-adrien-olichon-2387532.xpm");
+	data->texture->south->file = ft_strdup("textures/pexels-anni-roenkae-2832432.xpm");
+	data->texture->west->file = ft_strdup("textures/pexels-harrison-candlin-2441454.xpm");
+	data->texture->east->file = ft_strdup("textures/pexels-mitchell-luo-3707669.xpm");
+	if (open(data->texture->north->file, O_RDONLY) < 0 || open(data->texture->west->file, O_RDONLY) < 0 || \
+		open(data->texture->east->file, O_RDONLY) < 0 || open(data->texture->south->file, O_RDONLY) < 0)
 		error_exit("Texture not found", 1);
 	
 	//	North Textures
-	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->nor_f, &data->texture->n_size.x, &data->texture->n_size.y);
-	data->texture->north = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->north->file, &data->texture->north->size.x, &data->texture->north->size.y);
+	printf("north -> %d - %d\n", data->texture->north->size.x, data->texture->north->size.y);
+	data->texture->north->buffer = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
 	
 	// South Texture
-	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->sou_f, &data->texture->s_size.x, &data->texture->s_size.y);
-	data->texture->south = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->south->file, &data->texture->south->size.x, &data->texture->south->size.y);
+	printf("south -> %d - %d\n", data->texture->south->size.x, data->texture->south->size.y);
+	data->texture->south->buffer = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
 	
 	//	West Texture
-	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->wes_f, &data->texture->w_size.x, &data->texture->w_size.y);
-	data->texture->west = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->west->file, &data->texture->west->size.x, &data->texture->west->size.y);
+	printf("west -> %d - %d\n", data->texture->west->size.x, data->texture->west->size.y);
+	data->texture->west->buffer = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
 	
 	//	East Texture
-	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->eas_f, &data->texture->e_size.x, &data->texture->e_size.y);
-	data->texture->east = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
+	data->texture->tex_img->img = mlx_xpm_file_to_image(data->mlx, data->texture->east->file, &data->texture->east->size.x, &data->texture->east->size.y);
+	printf("east -> %d - %d\n", data->texture->east->size.x, data->texture->east->size.y);
+	data->texture->east->buffer = (int *)mlx_get_data_addr(data->texture->tex_img->img, &data->texture->tex_img->bits_per_pixel, &data->texture->tex_img->line_length, &data->texture->tex_img->endian);
 }

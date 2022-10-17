@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/13 18:21:56 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/17 12:23:03 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	draw_3d_wall(t_data *data, double proj_p, int color)
 	}
 }
 
-int	rendering_texColor(t_data *data, int tex_y, int *tex_buff)
+int	rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face)
 {
 	t_index		tex;
 	t_int_dx	i_tex;
 	double	zoom_factor;
 
-	zoom_factor = (double)data->texture->n_size.y / data->rays->wall_height;
+	zoom_factor = (double)tex_face->size.y / data->rays->wall_height;
 	tex.dy = tex_y + ((data->rays->wall_height / 2) - (HEIGHT / 2));
 	if (tex.dy < 0)
 		tex.dy = 0;
@@ -62,12 +62,12 @@ int	rendering_texColor(t_data *data, int tex_y, int *tex_buff)
 		tex.dx = data->rays->inter.dy;
 	tex.dx /= TILE_SIZE;
 	tex.dx -= floor(tex.dx);
-	tex.dx *= data->texture->n_size.x;
+	tex.dx *= tex_face->size.x;
 	tex.dy *=  zoom_factor;
 	tex.dy = floor(tex.dy);
-	tex.dy *= data->texture->n_size.x;
+	tex.dy *= tex_face->size.x;
 	i_tex.x = (int)tex.dx;
 	i_tex.y = (int)tex.dy;
 
-	return (tex_buff[i_tex.x + i_tex.y]);
+	return (tex_face->buffer[i_tex.x + i_tex.y]);
 }
