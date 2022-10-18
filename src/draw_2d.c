@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:04:54 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/10 11:36:59 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/18 22:12:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	draw_2d(t_data *data)
 				draw_2d_cube(data, x, y, RED);
 			else if (ft_strchr("NEWS0",data->map[y][x]) && data->if_2d)
 				draw_2d_cube(data, x, y, WHITE);
+			else if (data->map[y][x] == 'D' && data->if_2d)
+				draw_2d_cube(data, x, y, YELLOW);
 			x++;
 		}
 		y++;
