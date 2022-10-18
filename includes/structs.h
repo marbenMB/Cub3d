@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:09:51 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/17 12:15:22 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:47:05 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct s_ray
 	t_face_ray		face;
 	int				h_or_v;
 	double			wall_height;
+	t_index			door_inter;
+	int				where_D;
+	bool			if_is_door;
+	
 }	t_ray;
 
 typedef	struct s_texFace
@@ -87,6 +91,7 @@ typedef struct s_texture
 	t_texFace	*south;
 	t_texFace	*west;
 	t_texFace	*east;
+	t_texFace	*door;
 }	t_texture;
 
 typedef struct s_data

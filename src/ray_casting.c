@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/12 14:27:25 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:48:37 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	casting(t_data *data)
 	while (data->rays->id <= NUM_RAYS)
 	{
 		normilize_angle(&data->rays->angle);
+		data->rays->if_is_door = false;
 		init_rayData(data);
 		data->rays->angle += VAR_ANG;
 		data->rays->id++;
@@ -57,6 +58,14 @@ void	horizontal_inter(t_data *data)
 		step.dx *= -1;
 	while (!check_rayWall(data, st_inter.dx, st_inter.dy - check))
 	{
+		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && !data->rays->if_is_door)
+		{
+			data->rays->if_is_door = true;
+			data->rays->door_inter.dx = st_inter.dx;
+			data->rays->door_inter.dy = st_inter.dy;
+			data->rays->door_inter.var = sqrt(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
+			data->rays->where_D = HOR_INTER;
+		}
 		st_inter.dy += step.dy;
 		st_inter.dx += step.dx;
 	}
@@ -90,6 +99,18 @@ void	vertical_inter(t_data *data)
 		step.dy *= -1;
 	while (!check_rayWall(data, st_inter.dx - check, st_inter.dy))
 	{
+		st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
+		if (st_inter.var < data->rays->door_inter.var)
+		{
+			if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && (!data->rays->if_is_door || data->rays->where_D == HOR_INTER))
+			{
+				data->rays->if_is_door = true;
+				data->rays->door_inter.dx = st_inter.dx;
+				data->rays->door_inter.dy = st_inter.dy;
+				data->rays->door_inter.var = sqrt(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
+				data->rays->where_D = VER_INTER;
+			}
+		}
 		st_inter.dx += step.dx;
 		st_inter.dy += step.dy;
 	}

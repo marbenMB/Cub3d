@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/17 12:34:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:29:49 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void    init_angle(t_data *data, char player)
 
 void	opening_texture(t_data *data)
 {
-	data->texture->north->file = ft_strdup("textures/pexels-adrien-olichon-2387532.xpm");
-	data->texture->south->file = ft_strdup("textures/pexels-anni-roenkae-2832432.xpm");
-	data->texture->west->file = ft_strdup("textures/pexels-harrison-candlin-2441454.xpm");
-	data->texture->east->file = ft_strdup("textures/pexels-mitchell-luo-3707669.xpm");
+	data->texture->north->file = ft_strdup("textures/wall_1.xpm");
+	data->texture->south->file = ft_strdup("textures/wall_2.xpm");
+	data->texture->west->file = ft_strdup("textures/wall_3.xpm");
+	data->texture->east->file = ft_strdup("textures/wall_4.xpm");
 	if (open(data->texture->north->file, O_RDONLY) < 0 || open(data->texture->west->file, O_RDONLY) < 0 || \
 		open(data->texture->east->file, O_RDONLY) < 0 || open(data->texture->south->file, O_RDONLY) < 0)
 		error_exit("Texture not found", 1);

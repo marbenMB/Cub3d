@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/17 12:24:36 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:42:09 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void		row_press(t_data *data);
 	//	----------------	FT_CHECK 	----------------  //
 int			check_isWall(t_data *data, double x_move, double y_move);
 int			check_rayWall(t_data *data, double x_move, double y_move);
+int			check_rayDoor(t_data *data, double x_move, double y_move);
 void		check_playFace(t_ray *ray);
 t_texFace	*check_TexFace(t_data *data);
 	//	----------------	FT_UTILS 	----------------  //
