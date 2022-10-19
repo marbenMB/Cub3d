@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/18 16:48:37 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:22:23 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	casting(t_data *data)
 	{
 		normilize_angle(&data->rays->angle);
 		data->rays->if_is_door = false;
+		data->rays->door_inter.var = -1;
 		init_rayData(data);
 		data->rays->angle += VAR_ANG;
 		data->rays->id++;
@@ -32,6 +33,10 @@ void	init_rayData(t_data *data)
 	horizontal_inter(data);
 	vertical_inter(data);
 	rendering_wall(data);
+	if (data->rays->if_is_door)
+	{
+		rendering_door(data);
+	}
 }
 
 void	horizontal_inter(t_data *data)
@@ -99,10 +104,10 @@ void	vertical_inter(t_data *data)
 		step.dy *= -1;
 	while (!check_rayWall(data, st_inter.dx - check, st_inter.dy))
 	{
-		st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
-		if (st_inter.var < data->rays->door_inter.var)
+		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && (!data->rays->if_is_door || data->rays->where_D == HOR_INTER))
 		{
-			if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && (!data->rays->if_is_door || data->rays->where_D == HOR_INTER))
+			st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
+			if (!(data->rays->where_D == HOR_INTER && st_inter.var > data->rays->door_inter.var) || data->rays->door_inter.var == -1)
 			{
 				data->rays->if_is_door = true;
 				data->rays->door_inter.dx = st_inter.dx;

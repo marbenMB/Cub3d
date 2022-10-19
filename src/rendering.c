@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/18 22:11:36 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:22:56 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	rendering_wall(t_data *data)
 	if (proj_p > HEIGHT)
 		proj_p = HEIGHT;
 	draw_3d_wall(data, proj_p, GREY);
-	// rendering_door(data);
 }
 
 void	rendering_door(t_data *data)
@@ -35,9 +34,11 @@ void	rendering_door(t_data *data)
 	dist_ppp = (WIDTH / 2) / tan(FOV / 2);
 	data->rays->door_inter.var *= cos(data->rays->angle - data->play->view_angle);
 	proj_p = (TILE_SIZE / data->rays->door_inter.var) * dist_ppp;
+	data->rays->wall_height = proj_p;
 	if (proj_p > HEIGHT)
 		proj_p = HEIGHT;
-	draw_3d_wall(data, proj_p, YELLOW);
+	if (data->rays->door_inter.var < data->rays->distance)
+		draw_3d_wall(data, proj_p, YELLOW);
 }
 
 void	draw_3d_wall(t_data *data, double proj_p, int color)

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/18 16:36:43 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 05:13:51 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ void	check_playFace(t_ray *ray)
 
 t_texFace	*check_TexFace(t_data *data)
 {
+	if (data->rays->if_is_door)
+	{
+		// check_DoorFace(data);
+		return (data->texture->door);
+	}
 	if (data->rays->h_or_v == HOR_INTER)
 	{
 		if (data->rays->face.down)
@@ -114,4 +119,9 @@ t_texFace	*check_TexFace(t_data *data)
 			return (data->texture->west);
 	}
 	return (NULL);
+}
+
+t_texFace	*check_DoorFace(t_data *data)
+{
+	return (data->texture->door);
 }
