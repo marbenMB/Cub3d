@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/19 05:22:56 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 09:03:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	rendering_door(t_data *data)
 	if (proj_p > HEIGHT)
 		proj_p = HEIGHT;
 	if (data->rays->door_inter.var < data->rays->distance)
+	{
+		printf("%f - %f\n", data->rays->door_inter.var, data->rays->distance);
 		draw_3d_wall(data, proj_p, YELLOW);
+	}
 }
 
 void	draw_3d_wall(t_data *data, double proj_p, int color)
@@ -50,8 +53,6 @@ void	draw_3d_wall(t_data *data, double proj_p, int color)
 	if (first_pt.dy < 0)
 		first_pt.dy = 0;
 	next_pt.dy = first_pt.dy + proj_p;
-	// if (proj_p > HEIGHT)
-	// 	proj_p = HEIGHT;
 	if (next_pt.dy > HEIGHT)
 		next_pt.dy = HEIGHT;
 	while (first_pt.dy <= next_pt.dy)

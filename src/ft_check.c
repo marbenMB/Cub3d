@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/19 05:13:51 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 09:10:26 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	check_playFace(t_ray *ray)
 
 t_texFace	*check_TexFace(t_data *data)
 {
-	if (data->rays->if_is_door)
+	if (data->rays->if_is_door && data->rays->door_inter.var < data->rays->distance)
 	{
 		// check_DoorFace(data);
 		return (data->texture->door);
