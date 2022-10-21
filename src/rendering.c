@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:59:22 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/19 09:03:35 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/21 04:47:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rendering_wall(t_data *data)
 	data->rays->wall_height = proj_p;
 	if (proj_p > HEIGHT)
 		proj_p = HEIGHT;
-	draw_3d_wall(data, proj_p, GREY);
+	draw_3d_wall(data, proj_p, GREY, data->rays->h_or_v);
 }
 
 void	rendering_door(t_data *data)
@@ -38,13 +38,10 @@ void	rendering_door(t_data *data)
 	if (proj_p > HEIGHT)
 		proj_p = HEIGHT;
 	if (data->rays->door_inter.var < data->rays->distance)
-	{
-		printf("%f - %f\n", data->rays->door_inter.var, data->rays->distance);
-		draw_3d_wall(data, proj_p, YELLOW);
-	}
+		draw_3d_wall(data, proj_p, YELLOW, data->rays->where_D);
 }
 
-void	draw_3d_wall(t_data *data, double proj_p, int color)
+void	draw_3d_wall(t_data *data, double proj_p, int color, int interT)
 {
 	t_index first_pt;
 	t_index next_pt;
@@ -57,13 +54,13 @@ void	draw_3d_wall(t_data *data, double proj_p, int color)
 		next_pt.dy = HEIGHT;
 	while (first_pt.dy <= next_pt.dy)
 	{
-		color = rendering_texColor(data, first_pt.dy, check_TexFace(data));
+		color = rendering_texColor(data, first_pt.dy, check_TexFace(data), interT);
 		ft_mlx_pixel_put(data, data->rays->id, first_pt.dy, color);
 		first_pt.dy++;
 	}
 }
 
-int	rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face)
+int	rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face, int interT)
 {
 	t_index		tex;
 	t_int_dx	i_tex;
@@ -74,8 +71,14 @@ int	rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face)
 	if (tex.dy < 0)
 		tex.dy = 0;
 	tex.dx = data->rays->inter.dx;
-	if (data->rays->h_or_v == VER_INTER)
+	if (data->rays->if_is_door && data->rays->distance > data->rays->door_inter.var)
+		tex.dx = data->rays->door_inter.dx;
+	if (interT == VER_INTER)
+	{
 		tex.dx = data->rays->inter.dy;
+		if (data->rays->if_is_door && data->rays->distance > data->rays->door_inter.var)
+			tex.dx = data->rays->door_inter.dy;
+	}
 	tex.dx /= TILE_SIZE;
 	tex.dx -= floor(tex.dx);
 	tex.dx *= tex_face->size.x;

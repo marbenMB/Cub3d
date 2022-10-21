@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/19 09:11:21 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/21 05:19:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	casting(t_data *data)
 		normilize_angle(&data->rays->angle);
 		data->rays->if_is_door = false;
 		data->rays->door_inter.var = -1;
+		data->rays->where_D = 0;
 		init_rayData(data);
 		data->rays->angle += VAR_ANG;
 		data->rays->id++;
@@ -65,6 +66,8 @@ void	horizontal_inter(t_data *data)
 	{
 		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && !data->rays->if_is_door)
 		{
+			printf("%d  :  ", data->rays->where_D);
+			puts("H");
 			data->rays->if_is_door = true;
 			data->rays->door_inter.dx = st_inter.dx;
 			data->rays->door_inter.dy = st_inter.dy;
@@ -104,15 +107,17 @@ void	vertical_inter(t_data *data)
 		step.dy *= -1;
 	while (!check_rayWall(data, st_inter.dx - check, st_inter.dy))
 	{
-		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && (!data->rays->if_is_door || data->rays->where_D == HOR_INTER))
+		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check))
 		{
 			st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
-			if (!(data->rays->where_D == HOR_INTER && st_inter.var > data->rays->door_inter.var) || data->rays->door_inter.var == -1)
+			if (!data->rays->if_is_door || data->rays->door_inter.var > st_inter.var)
 			{
+				printf("%d  :  ", data->rays->where_D);
+				puts("V");
 				data->rays->if_is_door = true;
-				data->rays->door_inter.dx = st_inter.dx;
+				data->rays->door_inter.dx = st_inter.dx + 1;
 				data->rays->door_inter.dy = st_inter.dy;
-				data->rays->door_inter.var = sqrt(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
+				data->rays->door_inter.var = st_inter.var;
 				data->rays->where_D = VER_INTER;
 			}
 		}

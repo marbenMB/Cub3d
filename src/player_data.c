@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:06:17 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/18 22:20:16 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/19 10:07:30 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	opening_texture(t_data *data)
 	data->texture->south->file = ft_strdup("textures/wall_2.xpm");
 	data->texture->west->file = ft_strdup("textures/wall_3.xpm");
 	data->texture->east->file = ft_strdup("textures/wall_4.xpm");
-	data->texture->door->file = ft_strdup("textures/wood.xpm");
+	data->texture->door->file = ft_strdup("textures/bluestone.xpm");
 	if (open(data->texture->north->file, O_RDONLY) < 0 || open(data->texture->west->file, O_RDONLY) < 0 || \
 		open(data->texture->east->file, O_RDONLY) < 0 || open(data->texture->south->file, O_RDONLY) < 0 || \
 		open(data->texture->door->file, O_RDONLY) < 0)

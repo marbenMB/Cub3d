@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:07:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/18 22:37:57 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/21 04:42:29 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void		horizontal_inter(t_data *data);
 void		vertical_inter(t_data *data);
 	//	---------------- RENDeRING FUNC  ----------------  //
 void		rendering_wall(t_data *data);
-void	rendering_door(t_data *data);
-void		draw_3d_wall(t_data *data, double proj_p, int color);
-int			rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face);
+void		rendering_door(t_data *data);
+void		draw_3d_wall(t_data *data, double proj_p, int color, int interT);
+int			rendering_texColor(t_data *data, int tex_y, t_texFace *tex_face, int interT);
 
 #endif
