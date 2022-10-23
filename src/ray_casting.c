@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:15:32 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/21 05:19:55 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/22 14:11:28 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	horizontal_inter(t_data *data)
 	{
 		if (check_rayDoor(data, st_inter.dx, st_inter.dy - check) && !data->rays->if_is_door)
 		{
-			printf("%d  :  ", data->rays->where_D);
-			puts("H");
+			// printf("%d  :  ", data->rays->where_D);
+			// puts("H");
 			data->rays->if_is_door = true;
 			data->rays->door_inter.dx = st_inter.dx;
 			data->rays->door_inter.dy = st_inter.dy;
@@ -112,8 +112,8 @@ void	vertical_inter(t_data *data)
 			st_inter.var = sqrtf(pow((st_inter.dx - data->play->player.dx), 2) + pow((st_inter.dy - data->play->player.dy), 2));
 			if (!data->rays->if_is_door || data->rays->door_inter.var > st_inter.var)
 			{
-				printf("%d  :  ", data->rays->where_D);
-				puts("V");
+				// printf("%d  :  ", data->rays->where_D);
+				// puts("V");
 				data->rays->if_is_door = true;
 				data->rays->door_inter.dx = st_inter.dx + 1;
 				data->rays->door_inter.dy = st_inter.dy;

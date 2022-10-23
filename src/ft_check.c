@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 19:40:45 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/10/19 09:10:26 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/10/22 01:43:50 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_rayDoor(t_data *data, double x_move, double y_move)
 
 	next.x = convert_todx(x_move);
 	next.y = convert_todx(y_move);
-	if (x_move >= 0 && x_move < data->map_width * TILE_SIZE && y_move >= 0 && y_move < data->map_height * TILE_SIZE)
+	if (y_move >= 0 && y_move < data->map_height * TILE_SIZE && x_move >= 0 && x_move < ft_strlen(data->map[next.y]) * TILE_SIZE)
 	{
 		if (next.y >= 0 && data->map[next.y] && next.x >= 0 && data->map[next.y][next.x])
 			if (data->map[next.y][next.x] == 'D')
