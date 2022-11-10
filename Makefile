@@ -1,63 +1,71 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/10 11:22:32 by mbenbajj          #+#    #+#              #
-#    Updated: 2022/10/17 12:10:01 by mbenbajj         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = cub3d
 
 NAME_B = cub3d_bonus
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -fsanitize=address -Ofast
+CFLAGS = -Wall -Wextra -Werror -Ofast #-fsanitize=address
 
 CC = cc
 
-FRAM = -lmlx -framework OpenGL -framework AppKit
-
 ########## PATH ########
 
-LIBFT_DIR = libft
-SRC_DIR = src
-UTILS_DIR = utils/
+PARC_DIR = ./Mandatory/source/parcing
 
-SRC = $(UTILS_DIR)/get_next_line.c $(UTILS_DIR)/get_next_line_utils.c $(SRC_DIR)/cub3d.c $(SRC_DIR)/read_map.c $(SRC_DIR)/ft_error.c $(SRC_DIR)/draw_2d.c \
-		$(SRC_DIR)/key_handling.c $(SRC_DIR)/player_data.c $(SRC_DIR)/utils.c $(SRC_DIR)/ft_check.c $(SRC_DIR)/ray_casting.c $(SRC_DIR)/rendering.c
+DRAW_DIR = ./Mandatory/source/drawing
 
-OBJ = $(SRC:%.c=%.o)
+UTIL_DIR = ./Mandatory/source/utils
 
-.SILENT:	
+LIBFT_DIR = ./libft
+
+PARC_DIR_B = ./bonus/source/parcing
+
+DRAW_DIR_B = ./bonus/source/drawing
+
+UTIL_DIR_B = ./bonus/source/utils
+
+########################
+
+SRCS = ${PARC_DIR}/cub3d.c ${PARC_DIR}/map_storage.c ${PARC_DIR}/texture_utils.c ${PARC_DIR}/map_utils.c ${PARC_DIR}/check_closed_map.c ${PARC_DIR}/check_circle.c ${PARC_DIR}/ft_init_var.c\
+		${DRAW_DIR}/ft_fov.c ${DRAW_DIR}/ft_key.c ${DRAW_DIR}/handling_key_data.c ${DRAW_DIR}/ft_calcul_ray.c ${DRAW_DIR}/draw_circle.c ${DRAW_DIR}/render_wall.c\
+		${UTIL_DIR}/get_next_line.c ${UTIL_DIR}/get_next_line_utils.c
+
+SRCS_BONUS = ${PARC_DIR_B}/cub3d.c ${PARC_DIR_B}/map_storage.c ${PARC_DIR_B}/texture_utils.c ${PARC_DIR_B}/map_utils.c ${PARC_DIR_B}/check_closed_map.c ${PARC_DIR_B}/check_circle.c ${PARC_DIR_B}/ft_init_var.c\
+		${DRAW_DIR_B}/ft_window.c ${DRAW_DIR_B}/ft_draw.c ${DRAW_DIR_B}/ft_fov.c ${DRAW_DIR_B}/ft_key.c ${DRAW_DIR_B}/handling_key_data.c ${DRAW_DIR_B}/ft_calcul_ray.c ${DRAW_DIR_B}/draw_circle.c ${DRAW_DIR_B}/render_wall.c ${DRAW_DIR_B}/utils_file.c\
+		${UTIL_DIR_B}/get_next_line.c ${UTIL_DIR_B}/get_next_line_utils.c ${DRAW_DIR_B}/casting_utils.c
+
+OBJS = $(SRCS:%.c=%.o)
+OBJS_B = $(SRCS_BONUS:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME) : _libft $(OBJ)
-	@ $(CC) $(CFLAGS) $(SRC) $(FRAM) $(LIBFT_DIR)/libft.a -o $(NAME) -g
+_libft :
+	@make -C $(LIBFT_DIR)
+
+$(NAME) : $(OBJS) _libft
+	@rm -rf $(OBJS_B) $(NAME_B)
+	@make bonus -C $(LIBFT_DIR)
+	@$(CC)  $(CFLAGS) $(OBJS) $(LIBFT_DIR)/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@printf "\x1b[32m  ✅     Make successfully    💯 ✅\033[0m\n"
 
-%.o : %.c $(SRC) cub3d.h
-	@$(CC) $(CFLAGS) -c $< -o $@
+%.o:%.c $(SRCS)
+	@$(CC) $(CFLAGS) -c $<  -o  $@
 
-_libft :
+bonus: $(OBJS_B)
+	@rm -rf $(OBJS) $(NAME)
 	@ make bonus -C $(LIBFT_DIR)
+	@$(CC)  $(CFLAGS) $(OBJS_B) $(LIBFT_DIR)/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME_B)
+	@printf "\x1b[32m  ✅     Make Bonus successfully    💯 ✅\033[0m\n"
 
-_libft_clean :
-	@ make clean -C $(LIBFT_DIR)
+%.o:%.c $(SRCS_BONUS)
+	@$(CC) $(CFLAGS) -c $<  -o  $@
 
-_libft_fclean :
-	@ make fclean -C $(LIBFT_DIR)
+clean : 
+	@rm -rf $(OBJS) $(OBJS_B)
+	@make fclean -C $(LIBFT_DIR)
 
-clean : _libft_clean
-	@rm -rf $(OBJ)
-
-fclean : _libft_fclean clean
-	@rm -rf $(NAME) cub3d.dSYM
+fclean : clean
+	@rm -rf $(NAME) $(NAME_B)
 	@printf "\x1b[36m  ✅ Make fclean successfully 💯 ✅\033[0m\n"
 
 re : fclean all
 
-.PHONY : re fclean clean all
+.PHONY : all clean fclean re
