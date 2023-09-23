@@ -2,7 +2,7 @@
 This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever. It will enable you to explore ray-casting. The goal of the project is to make a dynamic view inside a maze, in which you’ll have to find your way ( The bonus part implements doors also ).
 
 # Version 
-🔴 This version is compatible with MacOs only if you want Linux version use Linux branch instead of master.
+🔴 This version is compatible with MacOs only if you want Linux version use Linux branch instead of main.
 
 ## Usage :
 ```bash
