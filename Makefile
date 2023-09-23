@@ -22,6 +22,8 @@ DRAW_DIR_B = ./bonus/source/drawing
 
 UTIL_DIR_B = ./bonus/source/utils
 
+FRAM = -framework OpenGL -framework AppKit ./MiniLibX/minilibx_macos/libmlx.a
+
 ########################
 
 SRCS = ${PARC_DIR}/cub3d.c ${PARC_DIR}/map_storage.c ${PARC_DIR}/texture_utils.c ${PARC_DIR}/map_utils.c ${PARC_DIR}/check_closed_map.c ${PARC_DIR}/check_circle.c ${PARC_DIR}/ft_init_var.c\
@@ -43,7 +45,7 @@ _libft :
 $(NAME) : $(OBJS) _libft
 	@rm -rf $(OBJS_B) $(NAME_B)
 	@make bonus -C $(LIBFT_DIR)
-	@$(CC)  $(CFLAGS) $(OBJS) $(LIBFT_DIR)/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJS) $(LIBFT_DIR)/libft.a $(FRAM) -o $(NAME)
 	@printf "\x1b[32m  ✅     Make successfully    💯 ✅\033[0m\n"
 
 %.o:%.c $(SRCS)
@@ -52,7 +54,7 @@ $(NAME) : $(OBJS) _libft
 bonus: $(OBJS_B)
 	@rm -rf $(OBJS) $(NAME)
 	@ make bonus -C $(LIBFT_DIR)
-	@$(CC)  $(CFLAGS) $(OBJS_B) $(LIBFT_DIR)/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME_B)
+	@$(CC)  $(CFLAGS) $(OBJS_B) $(LIBFT_DIR)/libft.a $(FRAM) -o $(NAME_B)
 	@printf "\x1b[32m  ✅     Make Bonus successfully    💯 ✅\033[0m\n"
 
 %.o:%.c $(SRCS_BONUS)
