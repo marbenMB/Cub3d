@@ -22,7 +22,7 @@ DRAW_DIR_B = ./bonus/source/drawing
 
 UTIL_DIR_B = ./bonus/source/utils
 
-FRAM = -framework OpenGL -framework AppKit ./MiniLibX/minilibx_macos/libmlx.a
+FRAM = -framework OpenGL -framework AppKit ./MiniLibX/minilibx-linux/libmlx.a
 
 ########################
 

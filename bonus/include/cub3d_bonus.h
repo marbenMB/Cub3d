@@ -22,7 +22,7 @@
 # include "../../libft/libft.h"
 # include "utils.h"
 # include "macros.h"
-# include "../../MiniLibX/minilibx_macos/mlx.h"
+# include "../../MiniLibX/minilibx-linux/mlx.h"
 # include <math.h>
 
 # define FLOOR  0
